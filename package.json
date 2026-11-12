@@ -7,11 +7,16 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "cypress run",
-    "test:open": "cypress open",
+    "test": "node scripts/run-cypress.cjs run",
+    "test:open": "node scripts/run-cypress.cjs open",
+    "test:spec": "node scripts/run-cypress.cjs run --spec",
+    "test:home": "node scripts/run-cypress.cjs run --spec \"cypress/e2e/home/*.cy.js\"",
+    "test:home:live": "node scripts/run-cypress.cjs run --headed --browser chrome --spec \"cypress/e2e/home/*.cy.js\"",
+    "test:live": "node scripts/run-cypress.cjs run --headed --no-exit --browser chrome --spec",
+    "test:headed": "node scripts/run-cypress.cjs run --headed --browser chrome --spec",
     "test:local": "start-server-and-test dev http://localhost:5173 test:e2e",
-    "test:e2e": "cypress run",
-    "test:e2e:open": "cypress open"
+    "test:e2e": "node scripts/run-cypress.cjs run",
+    "test:e2e:open": "node scripts/run-cypress.cjs open"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
@@ -20,6 +25,7 @@
     "vite": "^6.0.7"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "cypress": "^13.17.0",
     "start-server-and-test": "^3.0.13"
   }

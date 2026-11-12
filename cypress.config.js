@@ -8,5 +8,13 @@ export default defineConfig({
     viewportHeight: 768,
     chromeWebSecurity: false,
     defaultCommandTimeout: 10000,
+    setupNodeEvents(on, config) {
+      on("task", {
+        log(message) {
+          console.log("[CY-TASK]", message);
+          return null;
+        },
+      });
+    },
   },
 });

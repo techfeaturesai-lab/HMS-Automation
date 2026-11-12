@@ -1,0 +1,33 @@
+{
+  "admin": {
+    "role": "Admin",
+    "staffNumber": "HMS-01",
+    "password": "Admin@123"
+  },
+  "doctor": {
+    "role": "Doctor",
+    "name": "Dr. Chandan Kumar",
+    "staffNumber": "HMS-02",
+    "password": "Admin@123"
+  },
+  "nurse": {
+    "role": "Nurse",
+    "staffNumber": "HMS-03",
+    "password": "Admin@123"
+  },
+  "receptionist": {
+    "role": "Receptionist",
+    "staffNumber": "HMS-04",
+    "password": "Admin@123"
+  },
+  "wardInCharge": {
+    "role": "Ward In-Charge",
+    "staffNumber": "HMS-05",
+    "password": "Admin@123"
+  },
+  "pharmacist": {
+    "role": "Pharmacist",
+    "staffNumber": "HMS-07",
+    "password": "Admin@123"
+  }
+}
