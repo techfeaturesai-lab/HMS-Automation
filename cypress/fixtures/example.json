@@ -1,0 +1,10 @@
+{
+  "staffLogin": {
+    "validUser": {
+      "staffNumber": "HMS-4",
+      "password": "Admin@123",
+      "expectedName": "Aditi Sharma",
+      "expectedRole": "Receptionist"
+    }
+  }
+}
