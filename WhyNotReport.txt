@@ -1,0 +1,150 @@
+====================================================================================================
+                        HOSPITAL MANAGEMENT SYSTEM (HMS) - AUTOMATION FEASIBILITY REPORT
+====================================================================================================
+Date of Assessment: November 16, 2026
+Target Environment: https://devhms.techfeatures.ai
+Total Suites Analyzed:
+  1. Authentication & Security (28 Scenarios | 19 Automated | 9 Excluded)
+  2. Leave Management (22 Scenarios | 19 Automated | 3 Excluded)
+
+This report details all scenarios from the HMS test suite that cannot be automated in the current dev
+environment, along with exhaustive technical justifications and remediation requirements.
+
+====================================================================================================
+SECTION 1: AUTHENTICATION & SECURITY (SCENARIO EXCLUSIONS)
+====================================================================================================
+
+[1] SCENARIO ID: HMS-AUTH-001
+    Scenario Name: Patient Login - Registered Patient Send OTP Succeeds Without 500 Error
+    Technical Reason:
+      - This scenario requires receiving and entering a live 6-digit OTP dispatched to a physical mobile
+        number ("8923110895" or similar) via an external SMS telecom gateway.
+      - In end-to-end automation, reading real SMS messages requires access to an SMS gateway webhook,
+        a twilio/mock virtual phone API, direct access to the OTP database table, or a configured
+        static test bypass OTP (e.g. "123456" for dev).
+      - Since no static OTP bypass or SMS interception API is available on the dev server, the automated
+        test cannot retrieve the dynamically generated 6-digit code to complete authentication.
+
+[2] SCENARIO ID: HMS-AUTH-002
+    Scenario Name: Patient Session Expiry - Redirect Hides Authenticated Header and Footer
+    Technical Reason:
+      - This scenario has a strict pre-condition: "Patient ('8923110895') is logged in to the Patient Portal".
+      - Because patient login strictly requires the external SMS OTP flow (as detailed in HMS-AUTH-001),
+        an authenticated patient session cannot be established programmatically without SMS bypass.
+      - Note: Session expiry and token invalidation ARE automated for staff roles where credentials
+        are available (see HMS-AUTH-011 and HMS-AUTH-024).
+
+[3] SCENARIO ID: HMS-AUTH-003
+    Scenario Name: Patient Login - Keyboard Enter Key Triggers Send OTP and Verify OTP
+    Technical Reason:
+      - Step 8 explicitly requires entering a valid 6-digit dynamic OTP received on the phone and pressing
+        Enter to verify. Without access to the real-time SMS delivery mechanism, the second half of this
+        test flow cannot be executed.
+
+[4] SCENARIO ID: HMS-AUTH-005
+    Scenario Name: Booking Summary - Duplicate Slot Conflict Offers Change Time Slot Option
+    Technical Reason:
+      - This scenario requires pre-booking an appointment with a doctor for a specific slot, then attempting
+        a duplicate booking under the same patient mobile ("9876543210").
+      - In the public web flow, booking confirmation requires patient OTP verification. Without a static
+        OTP bypass, creating the initial confirmed booking state cannot be automated reliably in an
+        isolated repeatable test without manual tester intervention.
+
+[5] SCENARIO ID: HMS-AUTH-013
+    Scenario Name: OTP Expiry & Lockout Boundary - Rejects Expired OTP After 2:00 Window & Locks Excessive Wrong Attempts
+    Technical Reason:
+      - Triggering real OTP dispatches repeatedly on a shared dev server can exhaust SMS credits and trigger
+        telecom-level carrier blocking.
+      - Waiting for a 2-minute real-time timeout window in an automated test suite causes severe test
+        flakiness and bloats execution time.
+      - Testing lockout boundary policies requires a dedicated staging/mock SMS environment or API-level
+        unit tests rather than end-to-end browser automation against a live shared dev server.
+
+[6] SCENARIO ID: HMS-AUTH-016
+    Scenario Name: Patient IDOR Security - URL/API Parameter Tampering Cannot View Another Patient's Bookings or Bills
+    Technical Reason:
+      - Pre-condition requires two distinct pre-existing registered patient accounts ("UHID-000022" and
+        "UHID-000099") with populated historical appointments, prescriptions, and billing receipts.
+      - Both patient records must be accessible via authenticated Patient Portal sessions (SMS OTP gated).
+      - Without authenticated sessions for both UHIDs, cross-patient IDOR UI testing cannot be performed.
+
+[7] SCENARIO ID: HMS-AUTH-019
+    Scenario Name: Reject Patient OTP Login With Expired OTP After Timeout Window
+    Technical Reason:
+      - Same dependency as HMS-AUTH-013: Requires physical SMS OTP generation, sleeping through the live
+        expiration countdown, and submitting expired tokens.
+
+[8] SCENARIO ID: HMS-AUTH-022
+    Scenario Name: OTP Input Boundary Length Check (5 Digits Rejected vs 6 Digits Accepted)
+    Technical Reason:
+      - While partial typing can be tested on the client input, Step 8 through 10 require entering a
+        valid 6-digit OTP and authenticating successfully into the Patient Portal, which depends on real
+        SMS OTP delivery.
+      - Note: Mobile input length validation (10 digits) IS fully automated under HMS-AUTH-025.
+
+[9] SCENARIO ID: HMS-AUTH-026
+     Scenario Name: Concurrent Multi-Device Session Handling and Token Isolation
+     Technical Reason:
+      - The test steps explicitly mandate opening a "Chrome Regular Window A" and simultaneously opening
+        a "Chrome Incognito Window B", logging into different roles in each, and asserting cross-window
+        token isolation.
+      - Cypress by architectural design executes within a single browser instance and cannot control two
+        distinct browser processes or run Incognito alongside standard profile windows in parallel.
+      - This scenario is an architectural limitation of single-context browser runners and is best suited
+        for multi-browser orchestration harnesses (e.g. Playwright multi-context).
+
+- RESOLVED IN AUTHENTICATION:
+  HMS-AUTH-021 (Reject Inactive / Deactivated Staff Credentials on Login Screen)
+  Account Provided: HMS-10022 (Geeta Kumari - Receptionist, Inactive).
+  Status: 100% Automated and verified in cypress/e2e/auth/HMS-AUTH-021.cy.js.
+
+====================================================================================================
+SECTION 2: LEAVE MANAGEMENT (SCENARIO EXCLUSIONS)
+====================================================================================================
+Total Scenarios in Tab: 22
+Feasible Scenarios Automated: 19
+Excluded Scenarios (Not Feasible): 3
+
+[1] SCENARIO ID: HMS-LVE-001
+    Scenario Name: Leave Category Description - Enforces Max Character Limit Instead of 500 Error
+    Technical Reason:
+      - Steps 1-3 dictate: "Open Leave Management -> Open Leave Categories -> Click Add Leave Category".
+      - In the live application build (https://devhms.techfeatures.ai), the "Leave Categories" sub-module
+        is not implemented in the Leave Management sidebar or router.
+      - Available Leave Management sub-routes are strictly:
+          * My Leave (/leave/my-leave)
+          * All Leave Requests / Leave Management (/leave/leave-management)
+          * Team Calendar (/leave/team-calendar)
+      - Attempting direct navigation to /leave/leave-categories renders a blank view with no form controls.
+      - Once the development team deploys the "Leave Categories" configuration screen, this scenario can be
+        immediately automated.
+
+[2] SCENARIO ID: HMS-LVE-009
+    Scenario Name: Doctor Leave Approval - Pending Leave Handling vs Cancellation Rules
+    Technical Reason:
+      - Pre-condition: Requires pre-existing confirmed patient appointments on the doctor's future leave date.
+      - Test Steps dictate verifying that approving a doctor's leave moves impacted bookings to "Appointment
+        Cancellations" and triggers patient cancellation/reschedule notifications across channels.
+      - Because creating real confirmed patient appointments in the public portal requires live SMS OTP
+        verification (which is gated by external telecom gateways without a test bypass OTP), automated
+        tests cannot deterministically seed and confirm conflicting patient bookings in an isolated run.
+      - Triggering real SMS cancellations on shared staging telecom credits also carries carrier lockout risks.
+
+[3] SCENARIO ID: HMS-LVE-012
+    Scenario Name: E2E - Doctor Leave Approved After Existing Appointments Are Already Booked
+    Technical Reason:
+      - Pre-condition explicitly mandates: "Patient Priya Verma holds a Confirmed appointment with Dr. Amit Verma
+        for Date T+4 at 10:00 AM - 11:00 AM."
+      - Similar to HMS-LVE-009, creating and maintaining confirmed patient booking state for specific patient
+        names requires active patient OTP confirmation flow.
+      - Note: Doctor leave slot isolation without pre-existing appointments IS fully automated under
+        HMS-LVE-010 and HMS-LVE-011.
+
+====================================================================================================
+SUMMARY RECOMMENDATION FOR DEVELOPMENT & QA TEAMS
+====================================================================================================
+1. For Leave Management: Implement and expose the "Leave Categories" management interface in the Admin portal
+   to enable HMS-LVE-001.
+2. For SMS-Dependent Scenarios: Provide a Static/Mock OTP for the Dev/Test environment (e.g. accepted OTP "123456"
+   for numbers starting with 9999) to enable 100% automation of appointment-conflicting leave workflows.
+====================================================================================================

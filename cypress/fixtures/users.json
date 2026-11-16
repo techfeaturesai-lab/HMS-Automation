@@ -29,5 +29,12 @@
     "role": "Pharmacist",
     "staffNumber": "HMS-07",
     "password": "Admin@123"
+  },
+  "deactivatedStaff": {
+    "role": "Receptionist",
+    "name": "Geeta Kumari",
+    "staffNumber": "HMS-10022",
+    "password": "Admin@123",
+    "status": "Inactive"
   }
 }

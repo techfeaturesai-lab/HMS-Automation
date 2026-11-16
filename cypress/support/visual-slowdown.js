@@ -122,7 +122,18 @@ Cypress.Commands.overwrite("visit", (originalFn, url, options) => {
 
 // Overwrite `click`
 Cypress.Commands.overwrite("click", (originalFn, subject, ...args) => {
-  const tagName = (subject.prop("tagName") || "element").toLowerCase();
+  const currentCmd = cy.state && typeof cy.state === "function" && cy.state("current") ? cy.state("current").get("name") : "";
+  const tagName = (subject && subject.prop ? subject.prop("tagName") || "element" : "").toLowerCase();
+  const isInternalOrSelect =
+    currentCmd === "select" ||
+    tagName === "option" ||
+    tagName === "select" ||
+    (args[0] && typeof args[0] === "object" && args[0].errorOnSelect !== undefined);
+
+  if (isInternalOrSelect) {
+    return originalFn(subject, ...args);
+  }
+
   const text = (subject.text() || subject.val() || "").trim().slice(0, 30);
   const desc = `👆 Clicking <${tagName}> "${text}"`;
 

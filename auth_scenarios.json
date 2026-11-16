@@ -1,0 +1,254 @@
+[
+  {
+    "id": "HMS-AUTH-001",
+    "name": "Patient Login - Registered Patient Send OTP Succeeds Without 500 Error",
+    "desc": "Verify that an existing registered patient with a valid UHID can request an OTP and log in without validation or server errors.",
+    "pre": "- HMS website is accessible.\n- A registered patient (\"UHID-00005\", mobile \"8923110895\") exists in HMS.\n- User is logged out and opens the Patient Portal login screen.",
+    "data": "UHID: UHID-00005\nEndpoint: POST /api/auth/patient/send-otp\nMobile Number: 8923110895",
+    "steps": "1. Open the Patient Portal login page.\n2. Enter \"8923110895\" into the \"Mobile Number\" field.\n3. Click the \"Send OTP\" button.\n4. Wait for the \"OTP Verification\" screen to load.\n5. Verify that the API returns HTTP 200 (not HTTP 500) and displays the OTP input screen.\n6. Enter the received 6-digit OTP.\n7. Click \"Verify OTP\".\n8. Verify that the patient logs in without errors and lands on the Patient Portal dashboard showing bookings and profile.\n9. Verify that the \"Login screen\" screen presents the updated data and confirmation feedback.",
+    "expected": "- No \"500 Internal Server Error\" or \"We are unable to process your request at the moment\" banner appears.\n- OTP is dispatched and the OTP entry screen with countdown timer opens.\n- Verifying OTP authenticates the patient and loads the Patient Portal dashboard."
+  },
+  {
+    "id": "HMS-AUTH-002",
+    "name": "Patient Session Expiry - Redirect Hides Authenticated Header and Footer",
+    "desc": "Verify that when a Patient Portal session expires, the application redirects to Login and hides all authenticated navigation menus and footers.",
+    "pre": "- Registered Patient is logged in to HMS.\n- HMS website is accessible.\n- Patient (\"8923110895\") is logged in to the Patient Portal.\n- Session token is expired or invalidated.",
+    "data": "Mobile: 9876543210\nScenario Reference: HMS-AUTH-002",
+    "steps": "1. Click \"Sign In\" on the top navigation bar to open Patient Login.\n2. Enter \"9876543210\" in the \"Mobile Number\" field.\n3. Click \"Send OTP\".\n4. Enter the received 6-digit OTP in the \"OTP\" field.\n5. Click \"Verify OTP\".\n6. Wait for the \"Patient Portal Dashboard\" screen to load.\n7. Inspect the visible page, top navigation bar, and footer.\n8. Verify that the user is redirected to the Patient Login screen.\n9. Verify that authenticated Patient Portal header links, user menu, and portal footer are completely hidden.",
+    "expected": "- User is automatically redirected to the Login page upon session expiry, and no unhandled UI or backend error occurs.\n- No authenticated header, navbar, footer, or patient data remains rendered."
+  },
+  {
+    "id": "HMS-AUTH-003",
+    "name": "Patient Login - Keyboard Enter Key Triggers Send OTP and Verify OTP",
+    "desc": "Verify that pressing the Enter key submits the mobile number for Send OTP and submits the OTP for login verification.",
+    "pre": "- HMS website is accessible.\n- User is on the Patient Login screen and not authenticated.\n- Registered mobile number \"9876543210\" exists in HMS.",
+    "data": "Mobile: 9876543210\nScenario Reference: HMS-AUTH-003",
+    "steps": "1. Open the Patient Portal Login page.\n2. Click the \"Mobile Number\" field.\n3. Enter \"9876543210\".\n4. Press the \"Enter\" key on the keyboard without clicking \"Send OTP\".\n5. Wait for the \"OTP Verification\" screen to load.\n6. Verify that pressing Enter triggers \"Send OTP\" and opened the OTP input field.\n7. Enter the valid 6-digit OTP.\n8. Press the \"Enter\" key without clicking \"Verify OTP\".\n9. Wait for the \"Login screen\" screen to load.\n10. Verify that pressing Enter triggers OTP verification and logged the patient into the Patient Portal.",
+    "expected": "- Pressing Enter on Mobile Number triggers Send OTP identically to clicking \"Send OTP\".\n- Pressing Enter on OTP triggers Verify OTP identically to clicking \"Verify OTP\" and redirects to the dashboard."
+  },
+  {
+    "id": "HMS-AUTH-004",
+    "name": "Staff Login Modal - Layout Alignment from Booking Summary",
+    "desc": "Verify that clicking \"Staff Login\" from the Booking Summary screen renders an aligned modal without overlapping or shifted password fields.",
+    "pre": "- HMS website is accessible.\n- User is on the Booking Summary page of the public HMS website.",
+    "data": "Target Module: Authentication & Security\nTarget Screen: Login screen\nScenario Reference: HMS-AUTH-004",
+    "steps": "1. Open the HMS website.\n2. Navigate through the public booking flow to the \"Booking Summary\" screen.\n3. Click the \"Staff Login\" button.\n4. Wait for the \"Staff Login\" screen to load.\n5. Inspect the Email/Username field, Password field, eye-toggle icon, \"Forgot Password?\" link, and \"Login\" button.\n6. Review the target fields and active options on \"Login screen\".\n7. Verify that all inputs, labels, and action buttons inside the popup are with zero errors aligned within the modal boundaries.",
+    "expected": "- The Staff Login modal displays balanced padding and alignment across desktop and mobile viewports; the Password input and icons do not shift or overlap."
+  },
+  {
+    "id": "HMS-AUTH-005",
+    "name": "Booking Summary - Duplicate Slot Conflict Offers Change Time Slot Option",
+    "desc": "Verify that encountering a duplicate appointment warning on Booking Summary provides a direct \"Change Time Slot\" action for quick recovery.",
+    "pre": "- HMS website is accessible.\n- Patient \"9876543210\" already holds an active appointment with \"Dr. Rajesh Kumar Sharma\" for tomorrow at \"10:00 AM\".\n- User reaches the Booking Summary page for the same doctor and slot.",
+    "data": "Doctor: Dr. Rajesh Kumar Sharma\nConflicting Slot: Tomorrow 10:00 AM\nMobile Number: 9876543210",
+    "steps": "1. Open the HMS website.\n2. Select \"Dr. Rajesh Kumar Sharma\" and tomorrow's \"10:00 AM\" slot.\n3. Enter patient details (\"9876543210\") and proceed to the \"Booking Summary\" screen.\n4. Confirm the booking.\n5. Wait for the \"Login screen\" screen to load.\n6. Inspect the warning banner/dialog actions.\n7. Verify that a clear duplicate appointment message and a \"Change Time Slot\" option are displayed.\n8. Click \"Change Time Slot\".\n9. Verify that the user returns directly to the Slot Selection screen with doctor and patient context preserved.",
+    "expected": "- System blocks the duplicate slot booking and shows an actionable \"Change Time Slot\" control.\n- Clicking \"Change Time Slot\" returns to slot selection without forcing the user to restart the flow from step 1."
+  },
+  {
+    "id": "HMS-AUTH-006",
+    "name": "Role Switch Login - Immediate UI Profile Sync Without Manual Refresh",
+    "desc": "Verify that logging out of an Admin account and logging in as a Receptionist immediately renders the Receptionist profile in the header without stale Admin state.",
+    "pre": "- Active Hospital Administrator and Front Office Receptionist accounts exist.\n- HMS website is accessible.",
+    "data": "Previous Role: Hospital Administrator\nNew Role: Front Office Receptionist",
+    "steps": "1. Open the HMS website.\n2. Click the \"Sign In\" button.\n3. Select the \"Staff Login\" option.\n4. Enter the Hospital Administrator email in the \"Email\" field.\n5. Enter the Hospital Administrator password in the \"Password\" field.\n6. Click the \"Sign In\" button.\n7. Wait for the \"Admin Dashboard\" screen to load.\n8. Verify that the Hospital Administrator name and profile appear in the top header.\n9. Click the \"Logout\" button.\n10. Wait for the \"Login\" screen to load.\n11. Log in to HMS as a Front Office Receptionist.\n12. Wait for the \"Front Office Appointments\" screen to load.\n13. Inspect the top header profile name, role label, and sidebar menus immediately after login.\n14. Verify that the header and sidebar immediately display the Front Office Receptionist profile without a manual refresh.",
+    "expected": "- Top header displays the Hospital Administrator profile name and Admin navigation menus after the first login, and no error message is displayed.\n- Header identity, role badge, and sidebar menus update immediately to Front Office Receptionist without a manual page refresh, and no Admin menus or stale profile data remain."
+  },
+  {
+    "id": "HMS-AUTH-007",
+    "name": "Staff Login - Forgot Password Link Opens Reset Flow or Notice",
+    "desc": "Verify that clicking \"Forgot Password?\" on the Staff Login page opens the password reset workflow or displays a clear notice rather than doing nothing.",
+    "pre": "- HMS website is accessible.\n- User is logged out and viewing the Staff Login page.",
+    "data": "Target Module: Authentication & Security\nTarget Screen: Login screen\nScenario Reference: HMS-AUTH-007",
+    "steps": "1. Open the Staff Login page.\n2. Wait for the \"Login screen\" screen to load.\n3. Click the \"Forgot Password?\" link.\n4. Wait for the \"Login screen\" screen to load.\n5. Review the target fields and active options on \"Login screen\".\n6. Verify that clicking \"Forgot Password?\" opens a password reset modal/page or displays clear admin-reset instructions.",
+    "expected": "- Clicking \"Forgot Password?\" performs an interactive response (opens the Password Reset view/form or shows an informative system message) instead of remaining unresponsive."
+  },
+  {
+    "id": "HMS-AUTH-008",
+    "name": "Authorization Security - Client Local Storage Tampering Blocked by Server",
+    "desc": "Verify that modifying \"roleId\" or \"userId\" in browser Local Storage does not grant Administrator menus or data access to a Doctor user.",
+    "pre": "- HMS website is accessible.\n- A Doctor account with non-admin role exists.\n- Browser DevTools access is available for security testing.",
+    "data": "Tampered Keys: LocalStorage roleId = Admin roleId, userId = Admin userId",
+    "steps": "1. Click \"Sign In\" on the top navigation bar.\n2. Select \"Staff Login\".\n3. Enter \"the Doctor email\" in the \"Email\" field.\n4. Enter the account password in the \"Password\" field.\n5. Click the \"Sign In\" button.\n6. Wait for the \"Doctor OPD Queue\" screen to load.\n7. Open browser Developer Tools.\n8. Open Application.\n9. Open Local Storage.\n10. Modify \"roleId\" and \"userId\" to match an Administrator account.\n11. Refresh the browser page.\n12. Inspect the visible navigation menu.\n13. Attempt an Admin-only action (e.g., \"Manage Staff\" or \"Department Management\").\n14. Verify that Administrator menus remain inaccessible and server API requests enforce the authenticated Doctor role.",
+    "expected": "- Tampering with client-side \"roleId\" or \"userId\" in Local Storage does NOT unlock Admin menus or endpoints; server rejects unauthorized Admin requests with HTTP 401/403."
+  },
+  {
+    "id": "HMS-AUTH-009",
+    "name": "Authorization Security - Modified or Cross-User Access Token Rejected",
+    "desc": "Verify that altering the JWT Access Token or replaying another user's mismatched session token returns HTTP 401/403.",
+    "pre": "- HMS website is accessible.\n- Doctor user is authenticated in HMS Portal.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: Staff Login\nScenario Reference: HMS-AUTH-009",
+    "steps": "1. Click \"Sign In\" on the top navigation bar.\n2. Select \"Staff Login\".\n3. Enter \"the Doctor email\" in the \"Email\" field.\n4. Enter the account password in the \"Password\" field.\n5. Click the \"Sign In\" button.\n6. Wait for the \"Doctor OPD Queue\" screen to load.\n7. Replace or tamper with the \"Access Token\" signature or substitute an unpermitted user token.\n8. Send a request to a protected Admin endpoint (e.g., GET/POST departments or staff).\n9. Inspect the HTTP status code and response body.\n10. Verify that the server returns HTTP 401 Unauthorized or 403 Forbidden and returns no protected hospital data.",
+    "expected": "- Server validates JWT signature and user identity on every request, rejecting tampered or unauthorized tokens with HTTP 401 or 403 and no sensitive payload."
+  },
+  {
+    "id": "HMS-AUTH-010",
+    "name": "Role tampering, direct URL and session",
+    "desc": "Verify that modifying client-side role values in Local Storage, requesting restricted Admin URLs, or hitting Browser Back after Logout blocks unauthorized access.",
+    "pre": "- HMS website is accessible.\n- Test user accounts for the relevant roles exist.",
+    "data": "Restricted URL: the \"Admin Departments\" screen route",
+    "steps": "1. Open the HMS website.\n2. Click \"Sign In\".\n3. Select \"Staff Login\".\n4. Enter Nurse Email \"the Nurse email\" in \"Email\".\n5. Enter the account password in the \"Password\".\n6. Click \"Sign In\".\n7. Wait for the \"Nurse Station Console\" screen to load.\n8. Open Browser DevTools.\n9. Select the \"Application\" tab.\n10. Open \"Local Storage\", alter the stored role value to \"Admin\".\n11. Press F5 to refresh.\n12. Navigate directly to the \"Admin Departments\" screen route in the browser address bar.\n13. Verify that client-side storage tampering is ignored by server RBAC validation on protected routes.\n14. Click \"Logout\" in the top profile menu.\n15. Wait for the \"Login\" screen to load.\n16. Press the Browser \"Back\" button once.\n17. Verify that pressing Back after Logout denies viewing cached Nurse station data.",
+    "expected": "- Server authorization denies the \"Admin Departments\" screen route with HTTP 403 or redirects to \"/unauthorized\" / \"/nurse\", and zero department management records render.\n- The browser remains on the \"Login\" screen with expired session cookie/token, and zero previously cached patient vitals or station pages appear."
+  },
+  {
+    "id": "HMS-AUTH-011",
+    "name": "Staff login - forgot password, profile info, session expiry",
+    "desc": "Verify Staff Login Forgot Password link response, top-bar logged-in user profile accuracy across sequential logins, and redirect on session expiration.",
+    "pre": "- HMS website is accessible.\n- Test user accounts for the relevant roles exist.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: Staff Login\nScenario Reference: HMS-AUTH-011",
+    "steps": "1. Open the HMS website.\n2. Click \"Sign In\".\n3. Select \"Staff Login\".\n4. Click the \"Forgot Password?\" link on the Staff Login card.\n5. Wait for the \"Forgot Password\" screen to load.\n6. Verify that the Forgot Password link triggers a visible reset form or admin-contact notice.\n7. Return to \"Staff Login\".\n8. Enter \"the Front Office Receptionist email\" in \"Email\".\n9. Enter the account password in the \"Password\".\n10. Click \"Sign In\".\n11. Inspect the user name and role badge shown in the top-right header.\n12. Click the \"Logout\" button.\n13. Enter \"the Hospital Administrator email\" in \"Email\".\n14. Enter the account password in the \"Password\" on \"Staff Login\".\n15. Click \"Sign In\".\n16. Verify that the header profile card updates immediately to Hospital Admin instead of caching Meena Joshi info.\n17. Clear/expire the active authentication token in Application Storage.\n18. Click \"Department Management\" in the sidebar.\n19. Verify that expired session tokens block API navigation and redirect to Login.",
+    "expected": "- The \"Forgot Password?\" control opens the Reset Password dialog or displays explicit administrator reset instructions instead of staying unresponsive.\n- Top-right header badge immediately displays \"Hospital Admin\" (\"the Hospital Administrator email\") without stale Receptionist profile labels.\n- Clicking any menu item with an expired token returns HTTP 401 and redirects the user straight to the \"Staff Login\" screen."
+  },
+  {
+    "id": "HMS-AUTH-012",
+    "name": "Authentication Negative - Invalid OTP, Wrong Staff Credentials & Unregistered Mobile Rejection",
+    "desc": "Verify that entering a wrong 6-digit OTP, unregistered mobile number, or incorrect staff password displays clear auth errors without leaking account details.",
+    "pre": "- HMS website is accessible.\n- User is logged out on Patient Portal Login and Staff Login screens.",
+    "data": "Unregistered Mobile: 9000000001\nPatient Mobile: 8923110895 (the received 6-digit OTP)",
+    "steps": "1. Open the HMS website.\n2. Enter registered mobile \"8923110895\".\n3. Click \"Send OTP\".\n4. Enter an incorrect 6-digit OTP.\n5. Click \"Verify OTP\".\n6. Verify that generic \"Invalid OTP. Please try again.\" displays in full.\n7. Open On Staff Login.\n8. Enter valid email and wrong password \"an incorrect password payload\".\n9. Click Login.\n10. Verify that \"Invalid email or password.\" renders without leaking specific field validity.",
+    "expected": "- Invalid OTP and wrong Staff password are rejected with clear non-enumerating error messages, and no OTP is sent or verified.\n- \"Invalid email or password.\" displays without confirming which field missed."
+  },
+  {
+    "id": "HMS-AUTH-013",
+    "name": "OTP Expiry & Lockout Boundary - Rejects Expired OTP After 2:00 Window & Locks Excessive Wrong Attempts",
+    "desc": "Verify that an OTP submitted after its configured expiry window fails verification and repeated wrong OTP entries hit attempt throttling.",
+    "pre": "- HMS website is accessible.\n- Patient requests a valid 6-digit OTP on Patient Login.",
+    "data": "Repeated Invalid OTPs: 5 consecutive failed attempts\nMobile: 9876543210",
+    "steps": "1. Request an OTP on Patient Login, note OTP.\n2. Allow the OTP expiry timer to elapse without clicking \"Resend OTP\".\n3. Submit expired OTP.\n4. Verify that OTP entry fails validation showing \"OTP has expired. Please request a new OTP.\".\n5. Trigger fresh OTP.\n6. Submit an incorrect 6-digit OTP 5 times consecutively.\n7. Verify that rate-limit/lockout message stops rapid invalid attempts.",
+    "expected": "- Expired OTPs fail validation strictly after timeout, and consecutive failed attempts trigger temporary lockout protection, and no OTP is sent or verified.\n- On the \"Login screen\" screen, rate-limit/lockout message blocks brute force without any validation or server error."
+  },
+  {
+    "id": "HMS-AUTH-014",
+    "name": "Role-Based Access Control - Blocks Unauthenticated & Receptionist Access to Admin Routes",
+    "desc": "Verify that unauthenticated visitors and restricted roles (Patient, Nurse, Receptionist, Doctor) receive 401/403 or Login redirect when accessing privileged URLs.",
+    "pre": "- Browser starts in a clean unauthenticated guest session.\n- HMS website is accessible.\n- A Front Office Receptionist account exists.",
+    "data": "Protected Screen 1: Admin Department Management\nProtected Screen 2: Admin Staff Management\nProtected Screen 3: Payments and Refunds\nUnauthorized Status Code: HTTP 403 / 401",
+    "steps": "1. Open the HMS website.\n2. Request the \"Admin Department Management\" route directly in the browser address bar.\n3. Wait for the \"Login\" screen to load.\n4. Verify that unauthenticated requests to Admin routes redirect immediately to the Login screen.\n5. Log in to HMS as a Front Office Receptionist.\n6. Wait for the \"Front Office Appointments\" screen to load.\n7. Request the \"Admin Staff Management\" route directly in the browser address bar.\n8. Verify that Front Office Receptionist access to Admin routes and refund approval endpoints is blocked.",
+    "expected": "- Unauthenticated requests redirect straight to the \"Login\" screen with HTTP 401/403, and no Admin department data is visible.\n- Front Office Receptionist requests to Admin Staff Management or Admin refund approval APIs are rejected with HTTP 403 / unauthorized redirect, and no staff or refund controls load."
+  },
+  {
+    "id": "HMS-AUTH-015",
+    "name": "Session Lifecycle & Multi-Tab Sync - Back Button Blocked Post-Logout & Logout Propagates Across Tabs",
+    "desc": "Verify that logging out clears tokens, browser Back cannot reveal cached authenticated screens, and secondary open tabs invalidate.",
+    "pre": "- HMS website is accessible.\n- Staff or Patient opens HMS Portal across Tab A and Tab B while authenticated.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: Staff Login\nScenario Reference: HMS-AUTH-015",
+    "steps": "1. Click \"Sign In\" on the top navigation bar.\n2. Select \"Staff Login\".\n3. Enter \"the Hospital Administrator email\" in the \"Email\" field.\n4. Enter the account password in the \"Password\" field.\n5. Click the \"Sign In\" button.\n6. Wait for the \"Admin Dashboard\" screen to load.\n7. Verify that both tabs load authenticated data.\n8. Click \"Logout\" in Tab A.\n9. Press Browser \"Back\" button in Tab A.\n10. Verify that cached clinical/patient pages remain locked out while holding the operator on sign-in.\n11. Switch to Tab B.\n12. Click any link or refresh.\n13. Verify that any secondary browser tab recognizes the expired token and routes back to sign-in.",
+    "expected": "- Logout invalidates active session across tabs and blocks Back-button cache leakage.\n- Cached clinical/patient pages cannot be interacted with and user stays on Login.\n- Tab B detects invalid session and redirects to Login, and no unhandled UI or backend error occurs."
+  },
+  {
+    "id": "HMS-AUTH-016",
+    "name": "Patient IDOR Security - URL/API Parameter Tampering Cannot View Another Patient's Bookings or Bills",
+    "desc": "Verify that changing Appointment ID, UHID, or Bill ID parameters while logged in as Patient A never returns Patient B's private health or billing data.",
+    "pre": "- HMS website is accessible.\n- Patient A (UHID-000022) and Patient B (UHID-000099) both have appointments and bills.",
+    "data": "Tampered Target Resource: Patient B Appointment/Bill ID\nMobile: 9876543210",
+    "steps": "1. Click \"Sign In\" on the top navigation bar to open Patient Login.\n2. Enter \"9876543210\" in the \"Mobile Number\" field.\n3. Click \"Send OTP\".\n4. Enter the received 6-digit OTP in the \"OTP\" field.\n5. Click \"Verify OTP\".\n6. Wait for the \"Patient Portal Dashboard\" screen to load.\n7. Modify the Appointment ID or Bill ID in the URL bar (or replay GET API request) replacing it with Patient B's ID.\n8. Inspect response status and screen content.\n9. Verify that server rejects access with HTTP 403 Forbidden / \"Unauthorized\" and renders zero Patient B data.",
+    "expected": "- Cross-patient resource access fails with HTTP 403 Forbidden; Patient A never sees Patient B's clinical or billing records."
+  },
+  {
+    "id": "HMS-AUTH-017",
+    "name": "E2E - Wrong-Role Direct URL Access Prevention for Patient and Receptionist",
+    "desc": "Verify that authenticated Registered Patient and Front Office Receptionist users cannot access privileged routes of another HMS role via direct route navigation.",
+    "pre": "- Registered Patient is logged in to HMS.\n- HMS website is accessible.\n- An active Front Office Receptionist account exists.",
+    "data": "Restricted Staff Screen: Admin Staff Management\nRestricted Doctor Screen: Doctor Clinical Consultation\nExpected Block Code: HTTP 403 / Redirect",
+    "steps": "1. Open \"Patient Portal Dashboard\".\n2. Request the \"Admin Staff Management\" route directly in the browser address bar.\n3. Wait for the \"Unauthorized / Patient Dashboard\" screen to load.\n4. Verify that Patient access to Admin Staff Management is blocked and returns to Patient Portal.\n5. Click the \"Logout\" button.\n6. Log in to HMS as a Front Office Receptionist.\n7. Wait for the \"Front Office Appointments\" screen to load.\n8. Request the \"Doctor Clinical Consultation\" route directly in the browser address bar.\n9. Wait for the \"Unauthorized / Front Office Appointments\" screen to load.\n10. Verify that Receptionist access to Doctor clinical consultation routes is blocked.",
+    "expected": "- Registered Patient access to Admin Staff Management is rejected with HTTP 403 or redirected to Patient Portal, and no staff records are exposed.\n- Front Office Receptionist access to Doctor Clinical Consultation is denied with an unauthorized notice or redirect, and no clinical consultation controls open."
+  },
+  {
+    "id": "HMS-AUTH-028",
+    "name": "E2E - Wrong-Role Direct URL Access Prevention for Nurse Role",
+    "desc": "Verify that an authenticated Nurse user cannot access Admin Department Management or Staff Management screens via direct browser navigation.",
+    "pre": "- Nurse is logged in to HMS.\n- HMS website is accessible.",
+    "data": "Restricted Screen 1: Admin Department Management\nRestricted Screen 2: Admin Staff Management\nExpected Block Code: HTTP 403 / Unauthorized Redirect",
+    "steps": "1. Open \"Nurse Station Console\".\n2. Request the \"Admin Department Management\" route directly in the browser address bar.\n3. Wait for the \"Unauthorized / Nurse Station Console\" screen to load.\n4. Verify that Nurse access to Admin Department Management is blocked by the server.\n5. Request the \"Admin Staff Management\" route directly in the browser address bar.\n6. Wait for the \"Unauthorized / Nurse Station Console\" screen to load.\n7. Verify that Nurse access to Admin Staff Management is blocked without rendering any staff records.",
+    "expected": "- Server route guard blocks Nurse requests to Admin Department Management with HTTP 403 or unauthorized redirect, and no department creation or edit controls render.\n- Server route guard blocks Nurse requests to Admin Staff Management with HTTP 403 or unauthorized redirect, and no employee records or Admin menus appear."
+  },
+  {
+    "id": "HMS-AUTH-018",
+    "name": "Successful Staff Login With Valid Credentials and Role Dashboard Redirect",
+    "desc": "Verify that Staff Login authenticates valid Hospital Admin credentials and routes to the Admin Dashboard.",
+    "pre": "- HMS website is accessible.\n- Registered Hospital Admin account is Active.",
+    "data": "Target Module: Authentication & Security\nTarget Screen: Login screen\nScenario Reference: HMS-AUTH-018",
+    "steps": "1. Open HMS website.\n2. Click \"Sign In\".\n3. Switch to \"Staff Login\" tab/form.\n4. Enter valid Admin email and password.\n5. Click \"Login\".\n6. Wait for the \"Login screen\" screen to load.\n7. Verify that Staff Login succeeds and loads the Admin Dashboard with user profile name in top right.",
+    "expected": "- Valid Staff credentials authenticate via HTTP 200 and open the role-specific Admin Dashboard."
+  },
+  {
+    "id": "HMS-AUTH-019",
+    "name": "Reject Patient OTP Login With Expired OTP After Timeout Window",
+    "desc": "Verify that entering an OTP code after its validity window expires is rejected with explicit expiry message.",
+    "pre": "- HMS website is accessible.\n- Patient Priya Verma requests an OTP on Login.",
+    "data": "Action: Submit OTP after expiration window\nMobile Number: 9811223344",
+    "steps": "1. Open HMS website.\n2. Navigate to Patient Login.\n3. Enter registered mobile \"9811223344\".\n4. Click \"Send OTP\".\n5. Wait for the \"OTP Verification\" screen to load.\n6. Enter the old OTP digits.\n7. Click \"Verify & Login\".\n8. Verify that authentication rejects the expired OTP with an explicit \"OTP has expired\" error and offers \"Resend OTP\".",
+    "expected": "- Expired OTP is rejected with \"OTP has expired\" error and prompts user to request a fresh code, and no OTP is sent or verified."
+  },
+  {
+    "id": "HMS-AUTH-020",
+    "name": "Reject Malformed Email Format and Empty Password on Staff Login",
+    "desc": "Verify that Staff Login validates empty email, malformed email syntax, and empty password with clear inline errors.",
+    "pre": "- HMS website is accessible.\n- Staff Login screen is open.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: invalidemail",
+    "steps": "1. Open the HMS website.\n2. Open \"Staff Login\".\n3. Enter \"invalidemail\" in Email and leave Password blank.\n4. Click \"Login\".\n5. Wait for the \"Login screen\" screen to load.\n6. Verify that inline format error displays under Email and required error displays under Password without submitting API request.",
+    "expected": "- Client validation displays \"Enter a valid email address\" and \"Password is required\" with zero errors."
+  },
+  {
+    "id": "HMS-AUTH-021",
+    "name": "Reject Inactive / Deactivated Staff Credentials on Login Screen",
+    "desc": "Verify that an Inactive staff account receives clear deactivation rejection even with the right password.",
+    "pre": "- HMS website is accessible.\n- Staff account \"the patient email address\" is marked Inactive in Staff Management.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: the patient email address",
+    "steps": "1. Open the HMS website.\n2. Open \"Staff Login\".\n3. Enter email \"the patient email address\" and its previously valid password.\n4. Click \"Login\".\n5. Wait for the \"Login screen\" screen to load.\n6. Verify that authentication blocks sign-in with an explicit deactivated account message and creates no session token.",
+    "expected": "- Backend returns HTTP 403/401 with deactivated account notice and issues zero session credentials."
+  },
+  {
+    "id": "HMS-AUTH-022",
+    "name": "OTP Input Boundary Length Check (5 Digits Rejected vs 6 Digits Accepted)",
+    "desc": "Verify that submitting a 5-digit partial OTP keeps Verify blocked/validated while 6 digits permits submission.",
+    "pre": "- HMS website is accessible.\n- OTP verification screen is open for mobile 9876543210.",
+    "data": "Mobile: 9876543210\nPartial OTP Input: 5 numeric digits",
+    "steps": "1. Open HMS Patient Login.\n2. Enter mobile \"9876543210\".\n3. Request OTP.\n4. Enter a 5-digit partial code into the OTP input.\n5. Click \"Verify & Login\".\n6. Observe validation.\n7. Verify that submission blocks with \"Enter a valid 6-digit OTP\" error.\n8. Enter the final 6th digit to complete the valid OTP.\n9. Click \"Verify & Login\".\n10. Verify that valid 6-digit OTP passes length validation and authenticates with zero errors.",
+    "expected": "- 5-digit OTP fails client validation with clear 6-digit error notice, and no OTP is sent or verified.\n- On the \"Login screen\" screen, 6-digit valid OTP proceeds into Patient Portal without any validation or server error."
+  },
+  {
+    "id": "HMS-AUTH-023",
+    "name": "Password Show/Hide Toggle and Masking Security on Staff Login",
+    "desc": "Verify that password input masks characters by default, reveals plain text only when clicking the eye toggle, and re-masks on second click.",
+    "pre": "- HMS website is accessible.\n- Staff Login screen is open.",
+    "data": "Target Screen: Login screen\nInput / Filter Value: Secret@2026",
+    "steps": "1. Open the HMS website.\n2. Navigate to \"Staff Login\".\n3. Enter \"Secret@2026\" in the Password input box.\n4. Verify that input type defaults to \"password\" masking characters visually.\n5. Click the eye \"Show Password\" icon once.\n6. Verify that typed text reveals and clicking again restores masked dots.",
+    "expected": "- On the \"Login screen\" screen, password field defaults to type=\"password\" (masked) without any validation or server error.\n- Eye icon toggles plaintext visibility on and off with zero errors."
+  },
+  {
+    "id": "HMS-AUTH-024",
+    "name": "Session Persistence Across Hard Refresh vs Clean Termination on Logout",
+    "desc": "Verify that refreshing an authenticated dashboard preserves login state with zero errors, whereas clicking Logout immediately clears auth tokens.",
+    "pre": "- Registered Patient is logged in to HMS.\n- HMS website is accessible.",
+    "data": "Mobile: 9876543210\nScenario Reference: HMS-AUTH-024",
+    "steps": "1. Open HMS Patient Portal as Rahul Sharma.\n2. Press F5 to reload the page.\n3. Wait for the \"Login screen\" screen to load.\n4. Verify that the user stays logged in with dashboard data intact.\n5. Click \"Logout\" in the user profile menu.\n6. Wait for the \"Login screen\" screen to load.\n7. Verify that session tokens are cleared and opening \"/patient/bookings\" redirects back to Login.",
+    "expected": "- On the \"Login screen\" screen, page refresh preserves authenticated session seamlessly without any validation or server error.\n- Logout clears active token/cookie and blocks subsequent access to private routes."
+  },
+  {
+    "id": "HMS-AUTH-025",
+    "name": "Prevent Mobile Number Input Exceeding 10 Digits on Patient OTP Login",
+    "desc": "Verify that Patient Login mobile number enforces exact 10-digit Indian mobile boundary without accepting 9 or 11 digits.",
+    "pre": "- HMS website is accessible.\n- Patient OTP Login screen is open.",
+    "data": "11-digit attempt: 98765432109\nMobile: 9876543210",
+    "steps": "1. Open HMS Patient Login screen.\n2. Enter 9 digits \"987654321\".\n3. Click \"Send OTP\".\n4. Verify that validation displays 10-digit mobile error without dispatching SMS/OTP.\n5. Attempt typing 11 digits \"98765432109\" into mobile field.\n6. Verify that input caps at 10 digits or validates exact 10-digit format.",
+    "expected": "- 9-digit mobile triggers validation rejection without sending OTP.\n- On the \"Login screen\" screen, mobile input constrains to exact 10 digits without any validation or server error."
+  },
+  {
+    "id": "HMS-AUTH-026",
+    "name": "Concurrent Multi-Device Session Handling and Token Isolation",
+    "desc": "Verify that logging in as Receptionist in Session 1 and Admin in Session 2 (incognito) isolates RBAC tokens strictly per browser context.",
+    "pre": "- HMS website is accessible.\n- Regular Chrome window and Incognito Chrome window are available.",
+    "data": "Window B: Hospital Admin",
+    "steps": "1. Open the HMS website.\n2. Click \"Sign In\" on the top navigation bar.\n3. Select \"Staff Login\".\n4. Enter \"the Front Office Receptionist email\" in the \"Email\" field.\n5. Enter the account password in the \"Password\" field.\n6. Click the \"Sign In\" button.\n7. Wait for the \"Front Office Appointments\" screen to load.\n8. Open Chrome Incognito Window B.\n9. Click \"Sign In\" on the top navigation bar.\n10. Select \"Staff Login\".\n11. Enter \"the Hospital Administrator email\" in the \"Email\" field.\n12. Enter the account password in the \"Password\" field.\n13. Click the \"Sign In\" button.\n14. Wait for the \"Admin Dashboard\" screen to load.\n15. Return to Window A.\n16. Refresh the page.\n17. Attempt opening the \"Admin Staff Management\" screen route.\n18. Verify that Window A remains strictly Receptionist and cannot escalate into Admin permissions.",
+    "expected": "- Each browser context strictly isolates its own JWT/cookie session with zero privilege bleed across windows."
+  },
+  {
+    "id": "HMS-AUTH-027",
+    "name": "Reject Login Request When CSRF/Auth Header Is Stripped or Tampered",
+    "desc": "Verify that protected API calls sent without valid Bearer/session credentials return HTTP 401 Unauthorized consistently.",
+    "pre": "- HMS website is accessible.\n- Unauthenticated HTTP client or DevTools console is open.",
+    "data": "Header: Authorization Missing/Invalid \"Bearer fake123\"",
+    "steps": "1. Open the HMS website.\n2. Open DevTools or API client without valid login cookies.\n3. Send request to protected endpoint GET /api/patients with tampered header \"Bearer fake123\".\n4. Wait for the \"Login screen\" screen to load.\n5. Verify that backend rejects request with HTTP 401 Unauthorized and leaks zero patient database rows.",
+    "expected": "- Protected endpoint strictly rejects malformed or missing tokens with HTTP 401 and empty error payload, and no duplicate or invalid record is saved."
+  }
+]

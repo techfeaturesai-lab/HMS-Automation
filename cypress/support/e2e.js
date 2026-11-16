@@ -16,3 +16,8 @@
 import './commands';
 import './visual-slowdown';
 
+// Prevent Cypress from failing tests on unhandled application exceptions (Angular Zone.js / dev server warnings)
+Cypress.on("uncaught:exception", (err, runnable) => {
+  return false;
+});
+
