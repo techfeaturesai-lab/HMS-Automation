@@ -1,0 +1,62 @@
+{
+  "doctorListing": {
+    "url": "/admin/doctors",
+    "title": [],
+    "buttons": [],
+    "inputs": [],
+    "selects": [],
+    "tableHeaders": [],
+    "firstRowCols": [],
+    "firstRowActions": [],
+    "pagination": []
+  },
+  "addDoctorWizardUrl": "https://devhms.techfeatures.ai/admin/doctors",
+  "wizardStepper": [],
+  "step1Form": {
+    "labels": [],
+    "inputs": [
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "placeholder": "Search Patients/Appointments/Mobile Number...",
+        "class": ""
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "placeholder": "Search by name, email or mobile number",
+        "class": "filterControlinput w-100"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "filterControl"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "filterControl"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "page-size"
+      }
+    ]
+  }
+}

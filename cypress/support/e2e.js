@@ -14,4 +14,9 @@
 // ***********************************************************
 
 import './commands';
+import './doctorSelectors';
+import './doctorManagementConfig';
+import './doctorAuthCommands';
+import './doctorManagementHelpers';
+import './qaAuditTracker';
 

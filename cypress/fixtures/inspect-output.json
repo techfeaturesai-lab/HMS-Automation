@@ -1,0 +1,115 @@
+{
+  "steps": {},
+  "postLoginUrl": "https://devhms.techfeatures.ai/home",
+  "profileName": "",
+  "profileRole": "",
+  "sidebarLinks": [],
+  "doctorManagementUrl": "https://devhms.techfeatures.ai/admin/admindashboard",
+  "listing": {
+    "inputs": [
+      {
+        "tag": "INPUT",
+        "id": "",
+        "placeholder": "Search Patients/Appointments/Mobile Number...",
+        "class": "",
+        "name": "",
+        "formcontrolname": null
+      }
+    ],
+    "buttons": [
+      {
+        "text": "✖",
+        "class": "",
+        "id": "",
+        "title": ""
+      },
+      {
+        "text": "",
+        "class": "mobile-menu-btn",
+        "id": "",
+        "title": ""
+      },
+      {
+        "text": "",
+        "class": "search-icon-btn",
+        "id": "",
+        "title": ""
+      },
+      {
+        "text": "",
+        "class": "notification-bell-btn",
+        "id": "",
+        "title": ""
+      },
+      {
+        "text": "",
+        "class": "profile-menu-toggle",
+        "id": "",
+        "title": ""
+      },
+      {
+        "text": "",
+        "class": "sidebar-rail-toggle-btn",
+        "id": "",
+        "title": "Collapse sidebar"
+      }
+    ],
+    "selects": [],
+    "tableHeaders": [
+      "Doctor",
+      "Department",
+      "Status",
+      "Next Available"
+    ],
+    "rowActionButtons": []
+  },
+  "addDoctorUrl": "https://devhms.techfeatures.ai/admin/doctors",
+  "stepperItems": [],
+  "step1": {
+    "labels": [],
+    "inputs": [
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "type": "text",
+        "placeholder": "Search Patients/Appointments/Mobile Number...",
+        "formcontrolname": null,
+        "class": ""
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "type": "text",
+        "placeholder": "Search by name, email or mobile number",
+        "formcontrolname": null,
+        "class": "filterControlinput w-100"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "type": "select-one",
+        "formcontrolname": null,
+        "class": "filterControl"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "type": "select-one",
+        "formcontrolname": null,
+        "class": "filterControl"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "type": "select-one",
+        "formcontrolname": null,
+        "class": "page-size"
+      }
+    ]
+  }
+}

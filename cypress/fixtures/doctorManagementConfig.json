@@ -1,0 +1,201 @@
+{
+  "urls": {
+    "base": "https://devhms.techfeatures.ai/",
+    "home": "/home",
+    "publicDoctors": "/home/doctor-list",
+    "bookAppointment": "/book-appointment",
+    "adminDashboard": "/admin/admindashboard",
+    "doctorManagement": "/admin/doctors",
+    "addDoctor": "/admin/doctors/create",
+    "departmentManagement": "/admin/departments",
+    "staffManagement": "/admin/staff",
+    "leaveManagement": "/admin/leaves",
+    "doctorDashboard": "/doctor/dashboard",
+    "doctorOpdQueue": "/doctor/opd-queue",
+    "doctorAvailability": "/doctor/availability",
+    "doctorLeaves": "/doctor/leaves",
+    "patientManagement": "/patients",
+    "patientPortal": "/patient/bookings",
+    "auditLogs": "/admin/audit-logs"
+  },
+  "apiEndpoints": {
+    "doctors": "/api/doctors",
+    "departments": "/api/departments",
+    "leaves": "/api/leaves",
+    "appointments": "/api/appointments",
+    "consultations": "/api/consultations",
+    "patients": "/api/patients",
+    "notifications": "/api/notifications"
+  },
+  "credentials": {
+    "admin": {
+      "staffNumber": "HMS-1",
+      "email": "admin@hms.com",
+      "password": "Admin@123",
+      "expectedName": "Hospital Admin",
+      "expectedRole": "Admin",
+      "dashboardUrlPart": "/admin/admindashboard"
+    },
+    "doctor": {
+      "staffNumber": "HMS-2",
+      "email": "doctor@hms.com",
+      "password": "Admin@123",
+      "expectedName": "Dr. Naveen Mehta",
+      "expectedRole": "Doctor",
+      "dashboardUrlPart": ""
+    },
+    "receptionist": {
+      "staffNumber": "HMS-4",
+      "email": "receptionist@hms.com",
+      "password": "Admin@123",
+      "expectedName": "Aditi Sharma",
+      "expectedRole": "Receptionist",
+      "dashboardUrlPart": "/frontofficedashboard"
+    },
+    "nurse": {
+      "staffNumber": "HMS-NUR-1",
+      "email": "nurse@hms.com",
+      "password": "Admin@123",
+      "expectedName": "Nurse Pratibha",
+      "expectedRole": "Nurse",
+      "dashboardUrlPart": ""
+    },
+    "patient": {
+      "mobile": "9876543210",
+      "otp": "123456",
+      "uhid": "HMS-P-2026-0891",
+      "name": "Rahul Sharma"
+    }
+  },
+  "selectors": {
+    "loader": ".loader-backdrop",
+    "staffLoginTrigger": ".header-staff-btn, .menu-btn, .menu-btn > p",
+    "staffIdentifierInput": "#staffNumberInput",
+    "staffPasswordInput": "#staffPasswordInput",
+    "loginSubmitBtn": ".modern-submit-btn, button[type='submit']",
+    "doctorListingSearch": ".filterControlinput, input[placeholder*='Search by name, email or mobile number']",
+    "departmentFilter": "select.filterControl:first-of-type, .filterControl",
+    "statusFilter": "select.filterControl:last-of-type, .filterControl",
+    "pageSizeSelect": "select.page-size, .page-size",
+    "profileName": ".profile-name",
+    "profileRole": ".profile-role",
+    "sidebarNav": ".nav-list, aside, .sidebar",
+    "sidebarDoctorMenu": ".nav-list > :nth-child(10) > .sidebar-link, .sidebar-link",
+    "sidebarDoctorSubItem": ".sub-item",
+    "primaryBtn": ".primary-btn",
+    "addDocumentBtn": ".p-2 > .primary-btn",
+    "wizardStepper": ".step-bx",
+    "sameAsCurrentAddress": "#sameAsCurrentAddress",
+    "appointmentYes": "#appointmentYes",
+    "appointmentNo": "#appointmentNo",
+    "reviewConfirmCheck": "#reviewConfirmCheck",
+    "uploadZone": ".upload-zone",
+    "browseLink": ".upload-zone > .browse-link, .browse-link, .upload-icon-wrapper",
+    "profilePhotoUpload": ".upload-circle, .bi-plus-circle-fill, .bi-image",
+    "scheduleBtn": ".btn-outline-success",
+    "calendarTrigger": ".date-input, .calendar-trigger",
+    "calendarTodayBtn": ".today-btn",
+    "languageDropdown": ".language-dropdown-wrapper > .form-select, .form-select > .text-muted",
+    "languageOption": ".language-option, .language-option > .form-check-label",
+    "toastContainer": ".hms-toast, .hms-toast > span, .hms-toast-container, .toast-container, [role='alert']",
+    "logoutTrigger": ".more-icon, .more-icon > [cy='12'], .profile-name, .user-profile",
+    "logoutBtn": ".logout-link, button:contains('Logout'), a:contains('Logout'), .logout-btn"
+  },
+  "testData": {
+    "newDoctor": {
+      "firstName": "Siddharth",
+      "middleName": "Mohan",
+      "lastName": "Rao",
+      "fullName": "Dr. Siddharth Mohan Rao",
+      "email": "siddharth.rao@hms.com",
+      "mobile": "9876501234",
+      "alternateMobile": "9876501235",
+      "dob": "1982-05-15",
+      "gender": "Male",
+      "nationality": "Indian",
+      "maritalStatus": "Married",
+      "bloodGroup": "O+",
+      "joiningDate": "2023-02-01",
+      "department": "Cardiology",
+      "primarySpecialization": "Cardiology",
+      "qualification": "MD Cardiology",
+      "licenseNumber": "MMC-2015-44891",
+      "experienceYears": "8",
+      "regularFee": "1000",
+      "followUpFee": "500",
+      "followUpValidityDays": "7",
+      "languages": ["English", "Hindi"],
+      "bio": "MD Cardiologist with 12 years of experience",
+      "address": {
+        "line1": "101 Heart Care Avenue",
+        "line2": "Near City Hospital",
+        "country": "India",
+        "state": "Karnataka",
+        "city": "Bengaluru",
+        "postalCode": "560001"
+      },
+      "emergencyContact": {
+        "name": "Ramesh Rao",
+        "mobile": "9876509988",
+        "relationship": "Brother"
+      }
+    },
+    "doctors": {
+      "rajesh": "Dr. Rajesh Kumar Sharma",
+      "vaani": "Dr. Vaani Singh Bhatra",
+      "anil": "Dr. Anil Kumar Verma",
+      "neha": "Dr. Neha Kulkarni",
+      "priya": "Dr. Priya Kulkarni",
+      "amit": "Dr. Amit Verma",
+      "naveen": "Dr. Naveen Mehta",
+      "meera": "Dr. Meera Nair Sharma",
+      "temporary": "Dr. Temporary Test",
+      "longSpecialization": "Interventional Cardiology & Electrophysiology"
+    },
+    "departments": {
+      "cardiology": "Cardiology",
+      "neurology": "Neurology",
+      "endocrinology": "Endocrinology"
+    },
+    "search": {
+      "partialFirst": "Anil",
+      "partialLast": "Verma",
+      "fullName": "Anil Kumar Verma",
+      "clearQuery": "Vaani",
+      "noMatch": "ZzzDoctor404",
+      "specialChars": "@#$%^&*<>",
+      "altSpecialChars": "$#DOC_SYM"
+    },
+    "securityPayloads": {
+      "xssScript": "<script>alert('XSS')</script>",
+      "xssInlineScript": "<script>alert(\"x\")</script>",
+      "xssImg": "<img src=x onerror=alert(1)>",
+      "sqlInjection": "' OR 1=1 --",
+      "emoji": "😀",
+      "emojiBio": "Experienced cardiologist 😀"
+    },
+    "patient": {
+      "uhid": "HMS-P-2026-0891",
+      "name": "Virendra Singh"
+    },
+    "files": {
+      "validGovIdPdf": "government_id.pdf",
+      "validPanPdf": "pan_card.pdf",
+      "validLicensePdf": "license.pdf",
+      "validDegreeJpg": "degree.jpg",
+      "validFellowshipPdf": "fellowship_cert.pdf",
+      "validPhotoPng": "doctor_avatar.png",
+      "invalidGif": "avatar.gif",
+      "invalidSvg": "logo.svg",
+      "invalidDoubleExt": "invoice.pdf.exe",
+      "oversizedPhotoName": "large_photo_5mb.jpg",
+      "oversizedDocName": "oversized_doc_30mb.pdf"
+    }
+  },
+  "timeouts": {
+    "default": 20000,
+    "loader": 25000,
+    "navigation": 30000
+  }
+}
+

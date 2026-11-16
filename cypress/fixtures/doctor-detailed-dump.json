@@ -1,0 +1,464 @@
+{
+  "listing": {
+    "searchInput": {
+      "selector": ".filterControlinput",
+      "placeholder": "Search by name, email or mobile number"
+    },
+    "filters": [
+      {
+        "tag": "SELECT",
+        "class": "filterControl",
+        "options": [
+          {
+            "value": "",
+            "text": "All Department"
+          }
+        ]
+      },
+      {
+        "tag": "SELECT",
+        "class": "filterControl",
+        "options": [
+          {
+            "value": "",
+            "text": "All Status"
+          },
+          {
+            "value": "Active",
+            "text": "Active"
+          },
+          {
+            "value": "Inactive",
+            "text": "Inactive"
+          },
+          {
+            "value": "OnLeave",
+            "text": "On Leave"
+          }
+        ]
+      }
+    ],
+    "pageSize": {
+      "selector": ".page-size",
+      "options": []
+    },
+    "buttons": [
+      {
+        "text": "✖",
+        "class": ""
+      },
+      {
+        "text": "",
+        "class": "mobile-menu-btn"
+      },
+      {
+        "text": "",
+        "class": "search-icon-btn"
+      },
+      {
+        "text": "",
+        "class": "notification-bell-btn"
+      },
+      {
+        "text": "",
+        "class": "profile-menu-toggle"
+      },
+      {
+        "text": "",
+        "class": "sidebar-rail-toggle-btn"
+      },
+      {
+        "text": "Add Doctor",
+        "class": "primary-btn d-flex align-items-center gap-2"
+      },
+      {
+        "text": "",
+        "class": ""
+      },
+      {
+        "text": "",
+        "class": "btn-close"
+      },
+      {
+        "text": "Cancel",
+        "class": "btn btn-outline-secondary confirm-btn"
+      },
+      {
+        "text": "Processing...",
+        "class": "btn confirm-btn btn-danger"
+      }
+    ],
+    "headers": [
+      "Doctor ID",
+      "Doctor Name",
+      "Email",
+      "Phone",
+      "Department",
+      "Specialization",
+      "Experience",
+      "Fee (₹)",
+      "Patient/Hour",
+      "Status",
+      "Action"
+    ],
+    "tableRowsCount": 0
+  },
+  "wizard": {
+    "stepperSteps": [
+      "1\nPersonal Information",
+      "2\nEmployment Information",
+      "3\nProfessional Information",
+      "4\nDepartment Assignment",
+      "5\nConsultation Configuration",
+      "6\nProfessional Documents",
+      "7\nReview & Register"
+    ],
+    "step1Labels": [
+      {
+        "text": "Profile Photo",
+        "for": null
+      },
+      {
+        "text": "First Name *",
+        "for": null
+      },
+      {
+        "text": "Middle Name",
+        "for": null
+      },
+      {
+        "text": "Last Name *",
+        "for": null
+      },
+      {
+        "text": "Gender *",
+        "for": null
+      },
+      {
+        "text": "Date of Birth *",
+        "for": null
+      },
+      {
+        "text": "Blood Group *",
+        "for": null
+      },
+      {
+        "text": "Marital Status *",
+        "for": null
+      },
+      {
+        "text": "Nationality *",
+        "for": null
+      },
+      {
+        "text": "Mobile Number *",
+        "for": null
+      },
+      {
+        "text": "Alternate Mobile",
+        "for": null
+      },
+      {
+        "text": "Email *",
+        "for": null
+      },
+      {
+        "text": "Country *",
+        "for": null
+      },
+      {
+        "text": "State *",
+        "for": null
+      },
+      {
+        "text": "City *",
+        "for": null
+      },
+      {
+        "text": "PIN Code *",
+        "for": null
+      },
+      {
+        "text": "Address *",
+        "for": null
+      },
+      {
+        "text": "Country *",
+        "for": null
+      },
+      {
+        "text": "State *",
+        "for": null
+      },
+      {
+        "text": "City *",
+        "for": null
+      },
+      {
+        "text": "PIN Code *",
+        "for": null
+      },
+      {
+        "text": "Address *",
+        "for": null
+      },
+      {
+        "text": "Emergency Contact Name *",
+        "for": null
+      },
+      {
+        "text": "Emergency Contact Relationship *",
+        "for": null
+      },
+      {
+        "text": "Emergency Contact Number *",
+        "for": null
+      }
+    ],
+    "step1FormControls": [
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "",
+        "parentClass": "search-box"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "file",
+        "class": "",
+        "parentClass": "col-xxl-12 col-lg-12 col-md-12 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "date-input",
+        "parentClass": "date-input-shell"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "email",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-8 col-lg-8 col-md-8 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "sameAsCurrentAddress",
+        "name": "",
+        "formcontrolname": null,
+        "type": "checkbox",
+        "class": "form-check-input me-3",
+        "parentClass": "alert alert-light border d-flex align-items-center mb-0"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-8 col-lg-8 col-md-8 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-4 col-md-4 col-12"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "select-one",
+        "class": "form-select ng-untouched ng-pristine ng-valid",
+        "parentClass": "col-xxl-4 col-lg-6 col-md-4 col-12"
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "name": "",
+        "formcontrolname": null,
+        "type": "text",
+        "class": "form-control",
+        "parentClass": "col-xxl-4 col-lg-6 col-md-4 col-12"
+      }
+    ]
+  }
+}

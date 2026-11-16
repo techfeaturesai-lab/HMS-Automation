@@ -1,0 +1,3047 @@
+{
+  "scenarios": {
+    "HMS-DOC-006": {
+      "scenarioId": "HMS-DOC-006",
+      "scenarioName": "Doctor Permanent Address Dropdowns - Provides Country, State & City Cascading Dropdowns",
+      "status": "PASSED",
+      "startTime": "2026-11-13T07:54:52.184Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:01.997Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:02.640Z"
+        },
+        {
+          "checkLabel": "Navigate and scroll to Permanent Address section on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:02.878Z"
+        },
+        {
+          "checkLabel": "Select Country in Permanent Address",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:55:58.367Z"
+        },
+        {
+          "checkLabel": "Verify State dropdown populates cascading options for selected Country",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:05.327Z"
+        },
+        {
+          "checkLabel": "Select Country in Permanent Address ('India')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:04.579Z"
+        },
+        {
+          "checkLabel": "Verify City dropdown populates cascading options for selected State",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:06.058Z"
+        },
+        {
+          "checkLabel": "Permanent Address Country, State, and City cascading dropdown values verified",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T07:58:06.291Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T07:58:06.502Z"
+    },
+    "HMS-DOC-009": {
+      "scenarioId": "HMS-DOC-009",
+      "scenarioName": "Doctor Add Document Button - Prompts Clearly or Opens File Picker Without False Missing Error",
+      "status": "PASSED",
+      "startTime": "2026-11-13T08:40:08.529Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:10.848Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:11.355Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:46.336Z"
+        },
+        {
+          "checkLabel": "File upload dropzone and Browse triggers render interactively",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:47.219Z"
+        },
+        {
+          "checkLabel": "Clicking Add Document without attaching a file triggers validation / blocks addition",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:49.980Z"
+        },
+        {
+          "checkLabel": "Valid document attaches without blockers and renders in document list",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T08:40:52.028Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T08:40:52.633Z"
+    },
+    "HMS-DOC-010": {
+      "scenarioId": "HMS-DOC-010",
+      "scenarioName": "Doctor Gov ID Upload Validation - Clears Required Error Immediately After Uploading Document",
+      "status": "PASSED",
+      "startTime": "2026-11-13T09:54:48.632Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:31:42.562Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:31:43.089Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:32:44.075Z"
+        },
+        {
+          "checkLabel": "Inline error 'ID Proof document and type are required' is displayed when empty",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:32:46.005Z"
+        },
+        {
+          "checkLabel": "Select valid ID Proof type ('Aadhaar Card')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:32:47.390Z"
+        },
+        {
+          "checkLabel": "ID Proof required error clears immediately after uploading document",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:32:48.768Z"
+        },
+        {
+          "checkLabel": "Wizard advances to Step 7 (Review & Register) without blockers",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:32:52.286Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:32:53.283Z"
+    },
+    "HMS-DOC-011": {
+      "scenarioId": "HMS-DOC-011",
+      "scenarioName": "Doctor Registration Text Limits & Direct Stepper Navigation - Enforces Max Lengths & Stepper Clicks",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:12:01.206Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:13:44.780Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:13:45.538Z"
+        },
+        {
+          "checkLabel": "Verify character limits / input validation on First Name",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:13:48.250Z"
+        },
+        {
+          "checkLabel": "Complete all valid fields on Step 1 (Personal Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:05.505Z"
+        },
+        {
+          "checkLabel": "Advance to Step 2 (Employment Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:06.506Z"
+        },
+        {
+          "checkLabel": "Wizard stepper indicators reflect validated progression",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:06.912Z"
+        },
+        {
+          "checkLabel": "Direct backward navigation preserves entered Step 1 data",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:07.968Z"
+        },
+        {
+          "checkLabel": "Advance smoothly to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:14.919Z"
+        },
+        {
+          "checkLabel": "Verify character limits / validation on Professional Biography",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:14:27.698Z"
+        }
+      ],
+      "totalChecks": 9,
+      "passedChecks": 9,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:14:28.168Z"
+    },
+    "HMS-DOC-012": {
+      "scenarioId": "HMS-DOC-012",
+      "scenarioName": "Doctor Profile Photo & License Upload - Rejects Oversized (>2 MB/20 MB) & Unsupported (GIF/SVG) Formats",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:20:52.810Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:20:57.102Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:20:58.151Z"
+        },
+        {
+          "checkLabel": "Profile photo upload container is rendered on form",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:20:58.445Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:21:36.086Z"
+        },
+        {
+          "checkLabel": "Dropzones display explicit format (PNG, JPG, PDF) and size limit guidance",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:21:36.448Z"
+        },
+        {
+          "checkLabel": "Oversized file triggers validation feedback or rejection without server error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:21:37.367Z"
+        },
+        {
+          "checkLabel": "Upload size and format boundary guards prevent HTTP 500 / unhandled crash",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:21:37.673Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:21:38.065Z"
+    },
+    "HMS-DOC-005": {
+      "scenarioId": "HMS-DOC-005",
+      "scenarioName": "Staff/Doctor Identity Document Upload - PDF File Displays Uploaded & Enforces Mandatory Multi-Doc",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:23:38.408Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:23:46.888Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:23:47.338Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:24:42.700Z"
+        },
+        {
+          "checkLabel": "Select valid ID Proof type ('Aadhaar Card')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:24:43.677Z"
+        },
+        {
+          "checkLabel": "Uploaded identity document renders with preview/action controls in UI",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:24:45.009Z"
+        },
+        {
+          "checkLabel": "Wizard progression halts on Step 6 with mandatory document error displayed",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:24:46.610Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:24:47.636Z"
+    },
+    "HMS-DOC-007": {
+      "scenarioId": "HMS-DOC-007",
+      "scenarioName": "Doctor Same-Name Multi-Department Search - Returns All Matching Doctors",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:24:52.694Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:25:00.540Z"
+        },
+        {
+          "checkLabel": "Doctor directory search input is visible and active",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:25:00.838Z"
+        },
+        {
+          "checkLabel": "Doctor profile rendered for query 'Anil Kumar Verma'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:25:03.476Z"
+        }
+      ],
+      "totalChecks": 3,
+      "passedChecks": 3,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:25:03.697Z"
+    },
+    "HMS-DOC-008": {
+      "scenarioId": "HMS-DOC-008",
+      "scenarioName": "Doctor Registration Upload Dropzone - Entire Container Clickable to Open File Picker",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:25:08.216Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:25:15.095Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:25:15.541Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:26:11.083Z"
+        },
+        {
+          "checkLabel": "Upload dropzone containers render visibly on screen",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:26:11.991Z"
+        },
+        {
+          "checkLabel": "Entire dropzone container is interactive and clickable",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:26:14.932Z"
+        },
+        {
+          "checkLabel": "Underlying native file inputs attached and ready for OS file selection",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:26:15.683Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:26:16.819Z"
+    },
+    "HMS-DOC-014": {
+      "scenarioId": "HMS-DOC-014",
+      "scenarioName": "Emergency Contact Name Validation - Rejects Numeric-Only Values",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:26:21.538Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:46.401Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:46.861Z"
+        },
+        {
+          "checkLabel": "Navigate and scroll to Emergency Contact section on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:47.109Z"
+        },
+        {
+          "checkLabel": "Enter numeric-only value '998877' in Emergency Contact Name",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:48.451Z"
+        },
+        {
+          "checkLabel": "Numeric-only Emergency Contact Name is rejected / marked invalid by validation rule",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:49.004Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:39:49.304Z"
+    },
+    "HMS-DOC-015": {
+      "scenarioId": "HMS-DOC-015",
+      "scenarioName": "Doctor Registration DOB Picker & Location Cascade - Chronological Years, Flags & Cascading City",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:26:40.114Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:53.651Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:54.147Z"
+        },
+        {
+          "checkLabel": "Navigate and scroll to Address Information on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:54.456Z"
+        },
+        {
+          "checkLabel": "Select Country in Current Address ('India')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:55.863Z"
+        },
+        {
+          "checkLabel": "State dropdown populates cascading options for selected Country",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:56.485Z"
+        },
+        {
+          "checkLabel": "City dropdown populates cascading options for selected State",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:57.313Z"
+        },
+        {
+          "checkLabel": "DOB date picker input is visible and accessible",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:43:54.322Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:43:57.537Z"
+    },
+    "HMS-DOC-017": {
+      "scenarioId": "HMS-DOC-017",
+      "scenarioName": "Doctor Contact & Emergency Fields Validation - Exact 10-Digit Mobile, Optional Indicator, Numeric PIN",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:26:59.923Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:55.462Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:32.852Z"
+        },
+        {
+          "checkLabel": "Navigate and scroll to Contact Information on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:32.990Z"
+        },
+        {
+          "checkLabel": "Mobile input captures value and enforces length rule (length: 10)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:35.005Z"
+        },
+        {
+          "checkLabel": "Alternate Mobile input is present and optional",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:35.876Z"
+        },
+        {
+          "checkLabel": "Postal PIN Code accepts valid numeric postal code",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:36.756Z"
+        },
+        {
+          "checkLabel": "Step 1: Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:55.849Z"
+        },
+        {
+          "checkLabel": "Step 2: Open Contact Information on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:56.629Z"
+        },
+        {
+          "checkLabel": "Step 3: Attempt entering 12 digits in 'Mobile Number' ('987654321099')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:57.520Z"
+        },
+        {
+          "checkLabel": "Step 4: Verify that Mobile input caps at 10 digits",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:57.863Z"
+        },
+        {
+          "checkLabel": "Step 5: Inspect 'Alternate Mobile' label for absence of mandatory '*' and leave it blank",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:58.477Z"
+        },
+        {
+          "checkLabel": "Step 6: Enter 'ABC411' in 'PIN Code'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:59.385Z"
+        },
+        {
+          "checkLabel": "Step 7: Click 'Next' to trigger business rule validation",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:59.982Z"
+        },
+        {
+          "checkLabel": "Step 8: Verify business rule validation triggers inline warning for Mobile and PIN Code (numeric-only enforcement)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:58:00.202Z"
+        },
+        {
+          "checkLabel": "Mobile enforces exact 10 digits, optional Alternate Mobile displays without '*' and can be skipped, and PIN accepts digits only.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:58:00.343Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, numeric-only PIN Code validation blocks letters without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:58:00.479Z"
+        }
+      ],
+      "totalChecks": 11,
+      "passedChecks": 11,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:58:00.865Z"
+    },
+    "HMS-DOC-018": {
+      "scenarioId": "HMS-DOC-018",
+      "scenarioName": "Doctor Address Fields Structure - Includes Current/Permanent Line 1 & 2, Postal Code & Same-As",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:27:15.394Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:12.845Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:13.441Z"
+        },
+        {
+          "checkLabel": "Current Address section header is visible",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:13.640Z"
+        },
+        {
+          "checkLabel": "Current Address controls (Country, State, City, PIN Code, Address Line) render correctly",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:14.002Z"
+        },
+        {
+          "checkLabel": "Same as Current Address checkbox is present and interactive",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:14.205Z"
+        },
+        {
+          "checkLabel": "Permanent Address controls (Country, State, City, PIN Code, Address Line) render correctly",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:01:14.709Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:01:14.973Z"
+    },
+    "HMS-DOC-019": {
+      "scenarioId": "HMS-DOC-019",
+      "scenarioName": "Staff/Doctor Employment Spelling & Labels - Correct Spelling and Emergency Contact Relationship Label",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:27:50.578Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:02:19.073Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:02:20.784Z"
+        },
+        {
+          "checkLabel": "Emergency Contact Relationship selector is visible on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:02:21.103Z"
+        },
+        {
+          "checkLabel": "Heading accurately spelled 'Employment Information' (no typos)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:02:39.192Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:02:39.526Z"
+    },
+    "HMS-DOC-020": {
+      "scenarioId": "HMS-DOC-020",
+      "scenarioName": "Doctor Personal Information Nationality Field - Visible and Selectable in Step 1",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:28:28.117Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:01:59.709Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:02:00.103Z"
+        },
+        {
+          "checkLabel": "Nationality dropdown is visible on Step 1 Personal Information",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:06:31.798Z"
+        },
+        {
+          "checkLabel": "Select 'Indian' in Nationality dropdown",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:06:32.306Z"
+        },
+        {
+          "checkLabel": "Selected Nationality is saved and active in the form state",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:06:32.514Z"
+        },
+        {
+          "checkLabel": "Nationality dropdown is visible on Step 1 Personal Information with populated options",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:02:03.223Z"
+        },
+        {
+          "checkLabel": "Select 'Indian' ('India') in Nationality dropdown (verified not Afghanistan)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:02:03.749Z"
+        },
+        {
+          "checkLabel": "Nationality field displays in Step 1 Personal Information and saves selected nationality.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:02:03.945Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:02:04.276Z"
+    },
+    "HMS-DOC-013": {
+      "scenarioId": "HMS-DOC-013",
+      "scenarioName": "Doctor Documents Preview & Duplicate Type Guard - Consistent Preview Modal Without Forced Download",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:31:05.158Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:38:25.707Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:38:26.279Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:00.058Z"
+        },
+        {
+          "checkLabel": "Uploaded document displays an inline Preview button",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:01.144Z"
+        },
+        {
+          "checkLabel": "Inline Preview viewer opens document without unwanted forced download",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:02.246Z"
+        },
+        {
+          "checkLabel": "Additional Professional Documents type selection is active and guard-enabled",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:39:02.902Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T10:39:03.337Z"
+    },
+    "HMS-DOC-016": {
+      "scenarioId": "HMS-DOC-016",
+      "scenarioName": "Doctor Registration Employment & Department Rules - Blocks Future Joining Date & Enforces Language Limit",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:42:23.404Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:54:35.135Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:53:37.460Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 2 (Employment Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:53:54.840Z"
+        },
+        {
+          "checkLabel": "Employment Joining Date picker is accessible",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:53:55.017Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 4 (Department Assignment & Languages)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:54:10.130Z"
+        },
+        {
+          "checkLabel": "Language Spoken multi-select selector renders on form",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:54:10.535Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard and navigate to Employment Information",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:01.795Z"
+        },
+        {
+          "checkLabel": "Attempt to select future Joining Date (+4 months: March 2027 as per current timezone date)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:04.994Z"
+        },
+        {
+          "checkLabel": "Joining Date validates against permitted date bounds with zero system error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:05.222Z"
+        },
+        {
+          "checkLabel": "Navigate to Department Assignment and open Language Spoken multi-select",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:28.813Z"
+        },
+        {
+          "checkLabel": "Language Spoken enforces configured selection rules with zero errors",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:29.977Z"
+        },
+        {
+          "checkLabel": "Joining Date validates against permitted date bounds and Language Spoken enforces its configured selection rules with zero errors.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:55:30.586Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:55:31.647Z"
+    },
+    "HMS-DOC-021": {
+      "scenarioId": "HMS-DOC-021",
+      "scenarioName": "Inactivating Doctor/Department With Upcoming Bookings - Displays Warning Confirmation With Count",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:46:10.195Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:48.684Z"
+        },
+        {
+          "checkLabel": "Doctor deactivation action button is visible on active listing",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:49.027Z"
+        },
+        {
+          "checkLabel": "Confirmation warning / modal prompt is displayed before doctor deactivation",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:50.054Z"
+        },
+        {
+          "checkLabel": "Dismiss confirmation dialog leaving doctor status intact",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:50.313Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:08:50.450Z"
+    },
+    "HMS-DOC-022": {
+      "scenarioId": "HMS-DOC-022",
+      "scenarioName": "Edit Doctor Profile Documents - Displays Previously Uploaded Additional Documents",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:46:44.190Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:23.288Z"
+        },
+        {
+          "checkLabel": "Edit Doctor wizard loaded with profile data hydrated from backend",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:25.499Z"
+        },
+        {
+          "checkLabel": "Navigate to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:27.286Z"
+        },
+        {
+          "checkLabel": "Professional Documents and attachment dropzones render in Edit mode",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:27.616Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:10:27.891Z"
+    },
+    "HMS-DOC-023": {
+      "scenarioId": "HMS-DOC-023",
+      "scenarioName": "Doctor Available for Appointment Toggle = No - Hides Doctor From Booking Listing",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:47:03.048Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:15.751Z"
+        },
+        {
+          "checkLabel": "Doctor Management directory displays active records",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:14:00.964Z"
+        },
+        {
+          "checkLabel": "Navigate to public doctor directory (/home/doctor-list)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T10:55:22.270Z"
+        },
+        {
+          "checkLabel": "Navigate to public portal (/home)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:14:01.404Z"
+        },
+        {
+          "checkLabel": "Public doctor directory filters appointments per doctor availability status",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:14:01.721Z"
+        },
+        {
+          "checkLabel": "Locate target doctor ('Dr. KARAN CHAUHAN') for availability verification",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:18.838Z"
+        },
+        {
+          "checkLabel": "Open Doctor Edit view and set 'Available for Appointment = No' for Dr. KARAN CHAUHAN",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:21.023Z"
+        },
+        {
+          "checkLabel": "Navigate to public appointment booking portal (/home/doctor-list)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:22.412Z"
+        },
+        {
+          "checkLabel": "Verify doctor 'Dr. KARAN CHAUHAN' is excluded from public bookable doctor listings",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:22.662Z"
+        },
+        {
+          "checkLabel": "Doctors with \"Available for Appointment = No\" are excluded from bookable appointment listings across Portal and Website.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:05:22.998Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:05:23.451Z"
+    },
+    "HMS-DOC-024": {
+      "scenarioId": "HMS-DOC-024",
+      "scenarioName": "Doctor Name Field Stored XSS Prevention - Rejects Script Tags on Create Doctor",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:47:18.625Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:07.635Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:07.881Z"
+        },
+        {
+          "checkLabel": "Inject XSS payload into Doctor Name input field",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:19:55.274Z"
+        },
+        {
+          "checkLabel": "XSS payload blocked by client/server validation with zero alert execution",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:19:55.793Z"
+        },
+        {
+          "checkLabel": "Fill all mandatory inputs across Step 1 Personal & Contact Information",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:28.166Z"
+        },
+        {
+          "checkLabel": "Inject script XSS payload into 'First Name' ('<script>alert('XSS')</script>')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:29.864Z"
+        },
+        {
+          "checkLabel": "Attempt 'Next' with script payload and all other mandatory inputs complete",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:30.931Z"
+        },
+        {
+          "checkLabel": "XSS payload blocked or sanitized with zero script execution (alertTriggered = false)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:31.294Z"
+        },
+        {
+          "checkLabel": "Doctor Name rejects HTML/script payloads with zero errors via server & client validation; zero stored XSS.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:07:31.608Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:07:32.153Z"
+    },
+    "HMS-DOC-025": {
+      "scenarioId": "HMS-DOC-025",
+      "scenarioName": "Doctor OPD Final Review Action - Review All Sections Opens Consolidated Summary",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:47:35.679Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:12.819Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:13.302Z"
+        },
+        {
+          "checkLabel": "Fill wizard steps 1 to 6 and advance to Step 7 (Review & Register)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:53.547Z"
+        },
+        {
+          "checkLabel": "Consolidated review card renders entered clinician details across all sections",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:54.306Z"
+        },
+        {
+          "checkLabel": "Final confirmation review controls render ready for submission",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:54.966Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:24:55.419Z"
+    },
+    "HMS-DOC-026": {
+      "scenarioId": "HMS-DOC-026",
+      "scenarioName": "Doctor Registration Field Validation & Error Specificity - Highlights Missing/Invalid Fields Clear of Generic Toast",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:48:59.182Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:36:39.115Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:36:39.689Z"
+        },
+        {
+          "checkLabel": "Enter malformed email address ('invalid-email@')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:36:40.428Z"
+        },
+        {
+          "checkLabel": "Field-level validation highlights invalid input specifically",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:36:40.769Z"
+        },
+        {
+          "checkLabel": "Form stays on step without generic crash toast or unhandled error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:36:40.974Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:36:41.177Z"
+    },
+    "HMS-DOC-027": {
+      "scenarioId": "HMS-DOC-027",
+      "scenarioName": "Doctor Registration Rules - Auto-Capitalization, Single/Spouse Guard & Inline Qualification Error",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:49:16.429Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:25.820Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:26.508Z"
+        },
+        {
+          "checkLabel": "First Name entered and formatted (value: 'Rahul')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:27.246Z"
+        },
+        {
+          "checkLabel": "Marital Status dropdown is visible on Step 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:27.459Z"
+        },
+        {
+          "checkLabel": "Advance to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:48.249Z"
+        },
+        {
+          "checkLabel": "Qualification error is anchored to the qualification field",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:49.207Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:42:49.570Z"
+    },
+    "HMS-DOC-028": {
+      "scenarioId": "HMS-DOC-028",
+      "scenarioName": "Primary Specialization Dropdown - Includes Cardiology Alongside Configured Specialties",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:49:30.752Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:48:09.984Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:48:10.710Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:48:31.606Z"
+        },
+        {
+          "checkLabel": "Cardiology is available in Primary Specialization dropdown options",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:48:32.128Z"
+        },
+        {
+          "checkLabel": "Select Cardiology in Primary Specialization",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:48:32.687Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:48:33.072Z"
+    },
+    "HMS-DOC-029": {
+      "scenarioId": "HMS-DOC-029",
+      "scenarioName": "Doctor Management View Action - Opens Complete Doctor Profile Without Load Failure",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:50:15.344Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:52:19.761Z"
+        },
+        {
+          "checkLabel": "Doctor directory table renders active clinician rows",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:52:19.971Z"
+        },
+        {
+          "checkLabel": "Doctor Profile view loads full clinician information without error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:52:20.346Z"
+        }
+      ],
+      "totalChecks": 3,
+      "passedChecks": 3,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:52:20.537Z"
+    },
+    "HMS-DOC-030": {
+      "scenarioId": "HMS-DOC-030",
+      "scenarioName": "Mandatory Document Type Validation - Blocks Next Step Until Document Type Is Selected",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:50:49.230Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:56:09.213Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:56:09.819Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:56:46.547Z"
+        },
+        {
+          "checkLabel": "Wizard blocks navigation and displays document type / mandatory validation",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:56:47.939Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:56:48.424Z"
+    },
+    "HMS-DOC-031": {
+      "scenarioId": "HMS-DOC-031",
+      "scenarioName": "Doctor DOB Minimum Age Validation - Rejects Current Date as Doctor Date of Birth",
+      "status": "PASSED",
+      "startTime": "2026-11-13T10:51:59.938Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:42.205Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:42.761Z"
+        },
+        {
+          "checkLabel": "System blocks current date / underage DOB with validation feedback",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:43.752Z"
+        },
+        {
+          "checkLabel": "Enter current date as Doctor Date of Birth",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:57:43.382Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:57:43.956Z"
+    },
+    "HMS-DOC-032": {
+      "scenarioId": "HMS-DOC-032",
+      "scenarioName": "Doctor Availability Field Default State - Renders Unselected Until Explicit User Choice",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:01:31.849Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:59:35.206Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:59:35.901Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 5 (Weekly Availability)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:00:11.739Z"
+        },
+        {
+          "checkLabel": "Availability controls render in default neutral unselected state",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:00:11.986Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:00:12.454Z"
+    },
+    "HMS-DOC-033": {
+      "scenarioId": "HMS-DOC-033",
+      "scenarioName": "Doctor list search - partial and full name",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:04:33.961Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:04:52.015Z"
+        },
+        {
+          "checkLabel": "Doctor directory renders active rows",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:04:52.210Z"
+        },
+        {
+          "checkLabel": "Search by partial first name ('KARAN') returns matching record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:04:53.313Z"
+        },
+        {
+          "checkLabel": "Search by partial last name ('CHAUHAN') returns matching record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:04:55.069Z"
+        },
+        {
+          "checkLabel": "Search by full name ('KARAN CHAUHAN') returns exact record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:04:57.000Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:04:57.234Z"
+    },
+    "HMS-DOC-034": {
+      "scenarioId": "HMS-DOC-034",
+      "scenarioName": "Doctor list search - letter case and spaces",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:04:54.567Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:04.325Z"
+        },
+        {
+          "checkLabel": "Search with lowercase ('karan chauhan') returns matching record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:05.565Z"
+        },
+        {
+          "checkLabel": "Search with uppercase ('KARAN CHAUHAN') returns matching record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:07.401Z"
+        },
+        {
+          "checkLabel": "Search with leading/trailing spaces ('  KARAN CHAUHAN  ') returns matching record",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:09.294Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:09:09.462Z"
+    },
+    "HMS-DOC-035": {
+      "scenarioId": "HMS-DOC-035",
+      "scenarioName": "Doctor list search - no match and special characters",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:05:13.283Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:34.471Z"
+        },
+        {
+          "checkLabel": "Non-existent query ('ZzzDoctor404') displays clean No Records Found state",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:35.598Z"
+        },
+        {
+          "checkLabel": "Special characters query ('@#$%^&*<>') handles safely without server error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:09:37.249Z"
+        }
+      ],
+      "totalChecks": 3,
+      "passedChecks": 3,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:09:37.386Z"
+    },
+    "HMS-DOC-036": {
+      "scenarioId": "HMS-DOC-036",
+      "scenarioName": "Doctor list search - Clear (X) option",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:05:29.345Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:14:13.383Z"
+        },
+        {
+          "checkLabel": "Enter search query into Search input",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:14:14.394Z"
+        },
+        {
+          "checkLabel": "Clear (X) icon resets search input value to empty",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:14:15.150Z"
+        },
+        {
+          "checkLabel": "Unfiltered doctor list and pagination restored to Page 1",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:14:15.279Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:14:15.402Z"
+    },
+    "HMS-DOC-037": {
+      "scenarioId": "HMS-DOC-037",
+      "scenarioName": "Doctor list search - state after leaving the page",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:05:44.573Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:41.783Z"
+        },
+        {
+          "checkLabel": "Apply search filter ('Verma')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:42.802Z"
+        },
+        {
+          "checkLabel": "Navigate away to another administrative module",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:43.221Z"
+        },
+        {
+          "checkLabel": "Return to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:43.981Z"
+        },
+        {
+          "checkLabel": "Search box is reset to empty on re-entry",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:44.124Z"
+        },
+        {
+          "checkLabel": "List displays default state and records without error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:30:44.273Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:30:44.424Z"
+    },
+    "HMS-DOC-038": {
+      "scenarioId": "HMS-DOC-038",
+      "scenarioName": "Doctor list pagination - navigation",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:06:02.007Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:46:28.593Z"
+        },
+        {
+          "checkLabel": "Doctor directory renders page 1 records",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:46:28.705Z"
+        },
+        {
+          "checkLabel": "Page 2 renders distinct non-overlapping doctor records",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:46:29.044Z"
+        },
+        {
+          "checkLabel": "Previous page button navigates back cleanly",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T12:46:29.728Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T12:46:30.364Z"
+    },
+    "HMS-DOC-039": {
+      "scenarioId": "HMS-DOC-039",
+      "scenarioName": "Doctor list pagination - page size",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:06:15.580Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T14:49:53.583Z"
+        },
+        {
+          "checkLabel": "Page size dropdown updates displayed table row count",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T14:49:54.162Z"
+        }
+      ],
+      "totalChecks": 2,
+      "passedChecks": 2,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T14:49:54.530Z"
+    },
+    "HMS-DOC-040": {
+      "scenarioId": "HMS-DOC-040",
+      "scenarioName": "Doctor list pagination - boundaries",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:06:30.825Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:34.726Z"
+        },
+        {
+          "checkLabel": "Previous page button is disabled on page 1 boundary",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:01:02.244Z"
+        },
+        {
+          "checkLabel": "Zero matching results displays clean boundary state without UI crash",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:06:42.349Z"
+        },
+        {
+          "checkLabel": "Previous is disabled on page 1 boundary",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:34.910Z"
+        },
+        {
+          "checkLabel": "Next is disabled on the last page",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:35.286Z"
+        },
+        {
+          "checkLabel": "Empty list shows 'Showing 0 of 0' with a no-records message only (not when data is visible)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:36.774Z"
+        },
+        {
+          "checkLabel": "Only one page is shown when records fit on one page, and no duplicate or invalid record is saved",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:38.245Z"
+        },
+        {
+          "checkLabel": "Previous is disabled on page 1 and Next is disabled on the last page, and no unhandled UI or backend error occurs.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:38.423Z"
+        },
+        {
+          "checkLabel": "Empty list shows \"Showing 0 of 0\" with a no-records message only (not when data is visible).",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:38.574Z"
+        },
+        {
+          "checkLabel": "Only one page is shown when records fit on one page, and no duplicate or invalid record is saved.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:19:38.707Z"
+        }
+      ],
+      "totalChecks": 8,
+      "passedChecks": 8,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T15:19:38.945Z"
+    },
+    "HMS-DOC-041": {
+      "scenarioId": "HMS-DOC-041",
+      "scenarioName": "Doctor list pagination - with filter and refresh",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:06:47.090Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:08:22.614Z"
+        },
+        {
+          "checkLabel": "Apply Active status filter resetting pagination",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:14:06.333Z"
+        },
+        {
+          "checkLabel": "Browser refresh preserves consistent directory state and row display",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:14:11.464Z"
+        },
+        {
+          "checkLabel": "Navigate to page 2 in directory listing",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:08:23.527Z"
+        },
+        {
+          "checkLabel": "After a filter the list starts again from page 1.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:08:24.188Z"
+        },
+        {
+          "checkLabel": "After refresh the count is the same and consistent with the rows.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:08:25.982Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, count text always matches the rows visible without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:08:26.156Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T18:08:26.533Z"
+    },
+    "HMS-DOC-042": {
+      "scenarioId": "HMS-DOC-042",
+      "scenarioName": "Professional Biography - special character and emoji validation",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:07:03.693Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:24.762Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:25.748Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:41.573Z"
+        },
+        {
+          "checkLabel": "Enter emoji payload into Professional Biography ('😀')",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:21:12.772Z"
+        },
+        {
+          "checkLabel": "System blocks emoji / invalid special characters without server error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:21:13.821Z"
+        },
+        {
+          "checkLabel": "Type emoji 😀 in the Professional Biography field",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:47.750Z"
+        },
+        {
+          "checkLabel": "Replace with unsupported special characters @#$%^&* in Professional Biography",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:48.739Z"
+        },
+        {
+          "checkLabel": "A clear validation message is shown under the Professional Biography field, and no unhandled UI or backend error occurs.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:49.816Z"
+        },
+        {
+          "checkLabel": "The record is not saved with these characters.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:50.008Z"
+        },
+        {
+          "checkLabel": "No technical/database error is displayed, and no invalid record is saved on the 'Doctor Management list' screen.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:50.251Z"
+        },
+        {
+          "checkLabel": "Fill the other fields per configured rules",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:22:46.763Z"
+        }
+      ],
+      "totalChecks": 9,
+      "passedChecks": 9,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T18:22:50.636Z"
+    },
+    "HMS-DOC-043": {
+      "scenarioId": "HMS-DOC-043",
+      "scenarioName": "Professional Biography - script and SQL payload security",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:07:49.280Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:27:59.917Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:00.241Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:28.862Z"
+        },
+        {
+          "checkLabel": "Inject script payload into Bio: '<script>alert(\"x\")</script>'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:30.508Z"
+        },
+        {
+          "checkLabel": "Script execution blocked with zero popups or alerts triggered",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:31.237Z"
+        },
+        {
+          "checkLabel": "Inject SQL payload into Bio: '' OR 1=1 --'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:32.815Z"
+        },
+        {
+          "checkLabel": "SQL injection string handled safely with zero backend/database exceptions",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:08:33.543Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, no pop-up/script runs anywhere without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:31.214Z"
+        },
+        {
+          "checkLabel": "Text is rejected or shown as plain text, and no unhandled UI or backend error occurs.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:33.771Z"
+        },
+        {
+          "checkLabel": "No database error appears and no other data is exposed.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:34.243Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, all other records remain unchanged without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T15:28:36.133Z"
+        }
+      ],
+      "totalChecks": 9,
+      "passedChecks": 9,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T15:28:36.889Z"
+    },
+    "HMS-DOC-044": {
+      "scenarioId": "HMS-DOC-044",
+      "scenarioName": "Professional Biography - length limit boundary",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:08:38.732Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:08:53.136Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:08:54.457Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:09:26.342Z"
+        },
+        {
+          "checkLabel": "500 characters accepted in Professional Biography input",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:09:28.207Z"
+        },
+        {
+          "checkLabel": "501 characters boundary enforced (input capped at 500 or validation triggered)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:09:39.106Z"
+        },
+        {
+          "checkLabel": "500 characters are accepted and saved completely, and no invalid record is saved on the 'Doctor Management list' screen.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:09:39.567Z"
+        },
+        {
+          "checkLabel": "501 characters are blocked (typing stopped or a clear message), and no unhandled UI or backend error occurs.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:09:52.207Z"
+        },
+        {
+          "checkLabel": "No error code or truncation error is displayed.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:09:52.901Z"
+        },
+        {
+          "checkLabel": "The full text is visible when the record is opened again, and no duplicate or invalid record is saved.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:09:53.301Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:09:53.922Z"
+    },
+    "HMS-DOC-045": {
+      "scenarioId": "HMS-DOC-045",
+      "scenarioName": "Professional Biography - spaces and valid punctuation",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:09:44.138Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:10:50.529Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:10:52.010Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 3 (Professional Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:25.145Z"
+        },
+        {
+          "checkLabel": "Whitespace-only input evaluated by form validation",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:25.815Z"
+        },
+        {
+          "checkLabel": "Allowed punctuation (. , - ( ) #) accepted in bio without crash",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:28.908Z"
+        },
+        {
+          "checkLabel": "If mandatory, only spaces is not accepted and an error is shown.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:27.433Z"
+        },
+        {
+          "checkLabel": "Leading and trailing spaces are trimmed.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:30.710Z"
+        },
+        {
+          "checkLabel": "Punctuation (. - / #) is saved without any error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:34.309Z"
+        },
+        {
+          "checkLabel": "Full text is shown without truncation or character corruption.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:35.065Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:11:35.922Z"
+    },
+    "HMS-DOC-046": {
+      "scenarioId": "HMS-DOC-046",
+      "scenarioName": "Mobile number - length, prefix and characters",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:10:35.164Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:55.406Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:56.724Z"
+        },
+        {
+          "checkLabel": "9-digit mobile number triggers field validation error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:47.383Z"
+        },
+        {
+          "checkLabel": "Alphabetic letters rejected in mobile number input",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:48.365Z"
+        },
+        {
+          "checkLabel": "Valid 10-digit mobile number ('9876501234') accepted",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:10:49.229Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, 9 digits show a validation message without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:58.500Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, only 10 digits can be entered without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:11:59.593Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, letters, symbols and spaces are not accepted without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:12:01.579Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, valid number is accepted without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:12:02.724Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:12:03.193Z"
+    },
+    "HMS-DOC-047": {
+      "scenarioId": "HMS-DOC-047",
+      "scenarioName": "Required fields, navigation and data kept",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:19:48.404Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:27:20.131Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:27:21.577Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, messages appear under the right field without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:27:22.599Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, direct navigation works without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:27:58.136Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, data is kept without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:28:00.413Z"
+        },
+        {
+          "checkLabel": "Doctor created with a success message and visible in the list.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:28:06.946Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:28:08.311Z"
+    },
+    "HMS-DOC-048": {
+      "scenarioId": "HMS-DOC-048",
+      "scenarioName": "DOB, joining date, specialization, languages and address",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:20:04.722Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:25:27.116Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:25:29.165Z"
+        },
+        {
+          "checkLabel": "Age validation restricts invalid / current DOB",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:20:13.349Z"
+        },
+        {
+          "checkLabel": "Address fields and location hierarchy accepted advancing to Step 2",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:20:36.374Z"
+        },
+        {
+          "checkLabel": "Joining date follows configuration advancing to Step 3",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:20:43.135Z"
+        },
+        {
+          "checkLabel": "Cardiology specialization listed in options without error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:20:44.373Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, age validation works without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:25:31.170Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, language limit enforced without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:26:01.672Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, states/cities depend on selection without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:26:01.805Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, joining date follows the rule without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:26:10.685Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, cardiology listed without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:26:11.816Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:26:12.953Z"
+    },
+    "HMS-DOC-049": {
+      "scenarioId": "HMS-DOC-049",
+      "scenarioName": "File upload size, type and preview",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:20:49.584Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:29:49.033Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:29:50.702Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 6 (Professional Documents)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:31:57.666Z"
+        },
+        {
+          "checkLabel": "Valid PDF file accepted by upload dropzone without error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:21:54.207Z"
+        },
+        {
+          "checkLabel": "Oversized file handled cleanly with zero server crash",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:22:08.574Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, valid files accepted without error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:32:00.206Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, large/unsupported files rejected with a clear message without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:32:32.679Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, preview works and does not download without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:32:34.874Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, uploaded documents are shown on edit without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T16:32:35.770Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T16:32:37.422Z"
+    },
+    "HMS-DOC-050": {
+      "scenarioId": "HMS-DOC-050",
+      "scenarioName": "Emergency Leave Approval Automatic Appointment Cancellation and Patient SMS Cascade",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:22:13.795Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:52:54.697Z"
+        },
+        {
+          "checkLabel": "Doctor directory active with registered clinicians",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:52:56.326Z"
+        },
+        {
+          "checkLabel": "Doctor schedule availability checked for leave period",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:22:23.653Z"
+        },
+        {
+          "checkLabel": "Doctor slots for approved leave locked from new public bookings",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:22:23.843Z"
+        },
+        {
+          "checkLabel": "All 18 appointments are automatically transitioned to 'Reschedule Required / Doctor Unavailable' status.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:52:56.995Z"
+        },
+        {
+          "checkLabel": "Automated SMS/WhatsApp notifications with personalized reschedule links are dispatched to all 18 patients within 60 seconds.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:52:57.251Z"
+        },
+        {
+          "checkLabel": "Doctor slots for tomorrow are locked from any new booking across Web, Front Office, and Chatbot.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:52:57.432Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:52:57.717Z"
+    },
+    "HMS-DOC-051": {
+      "scenarioId": "HMS-DOC-051",
+      "scenarioName": "Consultation Time Slot Duration Reconfiguration Impact on Future Slots",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:22:28.232Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:04.250Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:05.443Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 5 (Weekly Availability & Slot Configuration)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:46.569Z"
+        },
+        {
+          "checkLabel": "Consultation time slot duration and shift intervals configurable without overlap",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:23:22.805Z"
+        },
+        {
+          "checkLabel": "Existing booked appointments at 09:00 AM and 09:15 AM remain unchanged without data corruption.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:46.845Z"
+        },
+        {
+          "checkLabel": "Subsequent open slots starting from 09:30 AM generate at 30-minute intervals (09:30, 10:00, 10:30).",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:47.381Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, no overlapping time slots are created without any validation or server error.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:54:47.887Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:54:48.772Z"
+    },
+    "HMS-DOC-052": {
+      "scenarioId": "HMS-DOC-052",
+      "scenarioName": "Automatic Slot Exclusion During Doctor Mandated Lunch and Break Buffer Intervals",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:23:28.179Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:01:57.029Z"
+        },
+        {
+          "checkLabel": "Open Add Doctor registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:01:58.178Z"
+        },
+        {
+          "checkLabel": "Advance wizard to Step 5 (Weekly Availability)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:02:41.231Z"
+        },
+        {
+          "checkLabel": "Shift time intervals exclude mandated lunch break from bookable slots",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:24:28.019Z"
+        },
+        {
+          "checkLabel": "Morning slots generate continuously from 09:00 AM up to 12:45 PM.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:02:41.594Z"
+        },
+        {
+          "checkLabel": "Zero slots exist between 01:00 PM and 02:00 PM; time period is designated as 'Lunch / Break'.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:02:42.047Z"
+        },
+        {
+          "checkLabel": "Afternoon slots resume promptly at 02:00 PM up to 05:00 PM without any overlapping booking.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T18:02:42.589Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T18:02:43.324Z"
+    },
+    "HMS-DOC-053": {
+      "scenarioId": "HMS-DOC-053",
+      "scenarioName": "Role-Based Access Control (RBAC) Cross-Doctor Clinical Record Privacy",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:28:23.115Z",
+      "checks": [
+        {
+          "checkLabel": "Hospital Admin logged in and Doctor Management directory accessible",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:38.816Z"
+        },
+        {
+          "checkLabel": "Patient medical timeline navigation and consultation record access verified",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:39.436Z"
+        },
+        {
+          "checkLabel": "System restricts access with message: 'Access Restricted: You do not have authorization to view sensitive department records without an active referral.'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:39.860Z"
+        },
+        {
+          "checkLabel": "Unauthorized access attempt is logged in the Security Audit Log, and no unhandled UI or backend error occurs",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:40.077Z"
+        },
+        {
+          "checkLabel": "General vitals and non-restricted medical summaries remain accessible",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:40.229Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:42:40.542Z"
+    },
+    "HMS-DOC-054": {
+      "scenarioId": "HMS-DOC-054",
+      "scenarioName": "Prevention of Doctor Double-Rostering Across Overlapping Departments (OPD vs Emergency/ICU)",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:28:37.795Z",
+      "checks": [
+        {
+          "checkLabel": "Admin logged in to HMS and navigated to Doctor Management",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:42:55.280Z"
+        },
+        {
+          "checkLabel": "Doctor schedule availability and shift configuration loaded",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:43:47.139Z"
+        },
+        {
+          "checkLabel": "System detects schedule collision and blocks shift assignment",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:43:47.589Z"
+        },
+        {
+          "checkLabel": "Modal warning is displayed: \"Conflict Detected: Dr. Naveen Mehta is already assigned to Emergency Duty (08:00 AM - 02:00 PM). Double-rostering is prohibited.\"",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:43:48.067Z"
+        },
+        {
+          "checkLabel": "Roster cannot be saved until conflict is resolved by admin",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:43:48.504Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:43:49.260Z"
+    },
+    "HMS-DOC-055": {
+      "scenarioId": "HMS-DOC-055",
+      "scenarioName": "E2E - Admin Creates Department, Onboards Doctor, Configures Availability & Publishes Doctor & Bookable on Public Website",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:29:40.265Z",
+      "checks": [
+        {
+          "checkLabel": "Admin logged in to HMS Admin Portal and opened Doctor Management",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:59:11.986Z"
+        },
+        {
+          "checkLabel": "Initialize doctor onboarding wizard for new clinician",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:59:13.133Z"
+        },
+        {
+          "checkLabel": "Doctor profile and schedule configured (Mon-Sat 10:00 AM - 02:00 PM, Fee ₹1,200)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:59:52.813Z"
+        },
+        {
+          "checkLabel": "New department and doctor go live across Home Page, Doctor Listing, Patient Portal, and Front Office immediately after configuration",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:59:56.060Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:59:56.940Z"
+    },
+    "HMS-DOC-056": {
+      "scenarioId": "HMS-DOC-056",
+      "scenarioName": "Block Receptionist, Nurse and Patient From Calling Admin Create/Delete Doctor APIs",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:30:45.129Z",
+      "checks": [
+        {
+          "checkLabel": "UI route guard blocks unauthorized direct navigation to /admin/doctors/create",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:45:36.537Z"
+        },
+        {
+          "checkLabel": "Direct POST /api/doctors rejects unauthorized modification with HTTP 401/403/404",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:45:36.746Z"
+        },
+        {
+          "checkLabel": "Direct DELETE /api/doctors rejects unauthorized deletion with HTTP 401/403/404",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:45:36.932Z"
+        },
+        {
+          "checkLabel": "UI route guard and backend API both reject non-Admin doctor management modifications with HTTP 403, and no duplicate or invalid record is saved",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:45:37.014Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:45:37.182Z"
+    },
+    "HMS-DOC-057": {
+      "scenarioId": "HMS-DOC-057",
+      "scenarioName": "Doctor Profile Update Survives Hard Browser Refresh Without Reverting Qualification or Fee",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:31:12.296Z",
+      "checks": [
+        {
+          "checkLabel": "Hospital Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:47:52.298Z"
+        },
+        {
+          "checkLabel": "Doctor directory active with existing clinician profiles",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:47:52.963Z"
+        },
+        {
+          "checkLabel": "Doctor Management listing hydrated and functional after hard browser reload",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:31:21.589Z"
+        },
+        {
+          "checkLabel": "Updated fee ₹1,200 persists with zero errors after browser refresh and reflects in Online Booking",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:31:21.772Z"
+        },
+        {
+          "checkLabel": "Updated fee ₹1,200 persists with zero errors after browser refresh and reflects in Online Booking.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:47:58.497Z"
+        }
+      ],
+      "totalChecks": 3,
+      "passedChecks": 3,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:47:58.984Z"
+    },
+    "HMS-DOC-058": {
+      "scenarioId": "HMS-DOC-058",
+      "scenarioName": "Doctor Schedule Weekly Availability Overlapping Shift Window Rejection",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:31:26.346Z",
+      "checks": [
+        {
+          "checkLabel": "Admin logged in to HMS and navigated to Doctor Management",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:48:17.331Z"
+        },
+        {
+          "checkLabel": "Doctor Weekly Availability and shift scheduling interface opened",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:48:57.164Z"
+        },
+        {
+          "checkLabel": "Schedule shift interval inputs and day selector controls available",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:48:57.651Z"
+        },
+        {
+          "checkLabel": "Form validation blocks overlapping weekday shift blocks with explicit overlap message",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:32:23.973Z"
+        },
+        {
+          "checkLabel": "Form validation blocks overlapping weekday shift blocks with explicit overlap message.",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:48:58.119Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:48:59.013Z"
+    },
+    "HMS-DOC-059": {
+      "scenarioId": "HMS-DOC-059",
+      "scenarioName": "Doctor Medical Registration License Number Minimum and Maximum Length Boundary",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:32:31.471Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:49:13.203Z"
+        },
+        {
+          "checkLabel": "Advance Add Doctor wizard to Step 3 (Professional Details)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:49:36.277Z"
+        },
+        {
+          "checkLabel": "Single-character registration number triggers inline validation error, and no invalid record is saved on the 'Doctor Management list' screen",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:49:37.214Z"
+        },
+        {
+          "checkLabel": "On the 'Doctor Management list' screen, valid license 'MMC-2015-44891' proceeds with zero errors without any validation or server error",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:49:49.776Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:49:50.425Z"
+    },
+    "HMS-DOC-060": {
+      "scenarioId": "HMS-DOC-060",
+      "scenarioName": "Doctor Card Specialization Badge Truncation & Tooltip Clarity on Doctor Directory",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:33:50.411Z",
+      "checks": [
+        {
+          "checkLabel": "Admin logged in to HMS and opened Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:51:08.417Z"
+        },
+        {
+          "checkLabel": "Doctor listing rows render with distinct Action column buttons",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:51:09.166Z"
+        },
+        {
+          "checkLabel": "Long specialization titles render without clipping Action column icons",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T17:51:09.541Z"
+        }
+      ],
+      "totalChecks": 3,
+      "passedChecks": 3,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T17:51:10.073Z"
+    },
+    "HMS-DOC-061": {
+      "scenarioId": "HMS-DOC-061",
+      "scenarioName": "Doctor Profile Deactivation Preserves Past Completed Appointments While Removing Future Public Slots",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:34:24.158Z",
+      "checks": [
+        {
+          "checkLabel": "Admin logged in to HMS and opened Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-16T07:27:41.690Z"
+        },
+        {
+          "checkLabel": "Doctor directory active with existing doctor records and status controls",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-16T07:27:41.915Z"
+        },
+        {
+          "checkLabel": "Inactive doctor is excluded from new public/Front Office bookings",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-16T07:27:43.070Z"
+        },
+        {
+          "checkLabel": "Historical consultation records remain intact with zero errors",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-16T07:27:43.197Z"
+        }
+      ],
+      "totalChecks": 4,
+      "passedChecks": 4,
+      "failedChecks": 0,
+      "endTime": "2026-11-16T07:27:43.407Z"
+    },
+    "HMS-DOC-001": {
+      "scenarioId": "HMS-DOC-001",
+      "scenarioName": "Register Doctor End-to-End Submission - Completes Without Request Failure",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:41:16.047Z",
+      "checks": [
+        {
+          "checkLabel": "Hospital Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:29.135Z"
+        },
+        {
+          "checkLabel": "Initialize Add Doctor 7-step registration wizard",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:42:29.425Z"
+        },
+        {
+          "checkLabel": "Fill all valid mandatory fields across wizard Steps 1 to 6",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:35.261Z"
+        },
+        {
+          "checkLabel": "Step 7 Review card renders entered summary details correctly",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:38.584Z"
+        },
+        {
+          "checkLabel": "Review confirmation checkbox checked",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:40.393Z"
+        },
+        {
+          "checkLabel": "Doctor registration API responded with HTTP 200/201",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:43.201Z"
+        },
+        {
+          "checkLabel": "Confirmation toast rendered without generic failure banner",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:44.112Z"
+        },
+        {
+          "checkLabel": "Doctor Management directory reloaded and searchable",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:43:49.424Z"
+        }
+      ],
+      "totalChecks": 8,
+      "passedChecks": 8,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:43:50.620Z"
+    },
+    "HMS-DOC-002": {
+      "scenarioId": "HMS-DOC-002",
+      "scenarioName": "Doctor Address Same as Current Address Toggle - Populates on Check and Clears on Uncheck",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:43:55.714Z",
+      "checks": [
+        {
+          "checkLabel": "Staff Admin login and navigate to Add Doctor Address section",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:44:44.668Z"
+        },
+        {
+          "checkLabel": "Populate Current Address (Country, State, City, PIN Code, Address Line)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:44:53.224Z"
+        },
+        {
+          "checkLabel": "Checkbox Checked: Permanent Address successfully synchronized with Current Address",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:44:54.296Z"
+        },
+        {
+          "checkLabel": "Checkbox Unchecked: Permanent Address fields cleared successfully",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:44:55.186Z"
+        },
+        {
+          "checkLabel": "Current Address values remain intact after uncheck",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:44:55.628Z"
+        }
+      ],
+      "totalChecks": 5,
+      "passedChecks": 5,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:44:56.111Z"
+    },
+    "HMS-DOC-003": {
+      "scenarioId": "HMS-DOC-003",
+      "scenarioName": "Doctor Management Listing, Clear (X) & Pagination",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:45:00.592Z",
+      "checks": [
+        {
+          "checkLabel": "Default Department filter is set to 'All Department'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:10.106Z"
+        },
+        {
+          "checkLabel": "Default Status filter is set to 'All Status'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:10.415Z"
+        },
+        {
+          "checkLabel": "Doctor directory table displays active and inactive records",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:10.704Z"
+        },
+        {
+          "checkLabel": "Search directory filters rows matching 'Vishal'",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:12.055Z"
+        },
+        {
+          "checkLabel": "Clear (X) icon clears search input and restores full listing",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:13.222Z"
+        },
+        {
+          "checkLabel": "Pagination summary ('Showing X-Y of Z') and page controls verified",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:13.670Z"
+        }
+      ],
+      "totalChecks": 6,
+      "passedChecks": 6,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:45:13.998Z"
+    },
+    "HMS-DOC-004": {
+      "scenarioId": "HMS-DOC-004",
+      "scenarioName": "Doctor Future Joining Date Rule - Blocks Public Booking Before Joining Date",
+      "status": "PASSED",
+      "startTime": "2026-11-13T11:45:18.575Z",
+      "checks": [
+        {
+          "checkLabel": "Admin login and navigate to Doctor Management directory",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:26.308Z"
+        },
+        {
+          "checkLabel": "Select doctor for edit: Dr. KARAN CHAUHAN",
+          "status": "PASSED",
+          "details": "ID/Name: Dr. KARAN CHAUHAN",
+          "timestamp": "2026-11-13T11:45:29.088Z"
+        },
+        {
+          "checkLabel": "Edit Doctor page loaded with form controls hydrated from API",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:30.504Z"
+        },
+        {
+          "checkLabel": "Navigate to Wizard Step 2 (Employment Information)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:31.435Z"
+        },
+        {
+          "checkLabel": "Update Joining Date to future date (+15 days: 2026-11-28)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:32.832Z"
+        },
+        {
+          "checkLabel": "Open public booking portal (/home/doctor-list)",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:34.242Z"
+        },
+        {
+          "checkLabel": "Doctor KARAN CHAUHAN is unlisted/excluded from public booking prior to future Joining Date",
+          "status": "PASSED",
+          "details": "",
+          "timestamp": "2026-11-13T11:45:34.494Z"
+        }
+      ],
+      "totalChecks": 7,
+      "passedChecks": 7,
+      "failedChecks": 0,
+      "endTime": "2026-11-13T11:45:35.066Z"
+    }
+  },
+  "lastUpdated": "2026-11-13T07:49:02.988Z"
+}

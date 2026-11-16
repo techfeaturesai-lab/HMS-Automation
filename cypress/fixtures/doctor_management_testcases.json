@@ -1,0 +1,551 @@
+[
+  {
+    "Scenario ID": "HMS-DOC-001",
+    "Scenario Name": "Register Doctor End-to-End Submission - Completes Without Request Failure",
+    "Test Case Description": "Verify that submitting all valid steps of the Add Doctor wizard completes registration without displaying \"We are unable to process your request at the moment.\".",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is logged in to HMS Admin Portal.\n- Valid doctor personal details, employment, license documents (<= 2 MB each), and department assignment are ready.",
+    "Test Data": "Department: Cardiology\nExperience: 8 Years\nRegular Fee: ₹1,000\nFollow-Up Fee: ₹500\nFollow-Up Validity: 7 Days",
+    "Test Steps": "1. Click \"Add Doctor\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Fill valid mandatory fields across Personal Info, Employment Info, Professional Info, Department Assignment, Consultation Configuration, and Professional Documents.\n4. Select the confirmation checkbox on the final review step.\n5. Click \"Register Doctor\".\n6. Wait for the \"Doctor Management\" screen to load.\n7. Verify that HTTP 200/201 success response, confirmation toast displays, and \"Dr. Siddharth Mohan Rao\" appears in the Doctor Management list.",
+    "Expected Result": "- Doctor registration completes with confirmation toast and no generic \"We are unable to process your request at the moment.\" error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-002",
+    "Scenario Name": "Doctor Address Same as Current Address Toggle - Populates on Check and Clears on Uncheck",
+    "Test Case Description": "Verify that checking \"Same as Current Address\" copies Current Address into Permanent Address and unchecking clears the copied Permanent Address fields.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Address step and fills valid Current Address details.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-002",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Click \"Add Doctor\".\n3. Open Address section and fill all Current Address fields.\n4. Check \"Same as Current Address\".\n5. Verify that all Permanent Address fields auto-populate identically to Current Address.\n6. Uncheck \"Same as Current Address\".\n7. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".",
+    "Expected Result": "- Checking synchronizes Current Address to Permanent Address; unchecking clears the copied Permanent Address fields.\n- On the \"Doctor Management list\" screen, copied Permanent Address values clear automatically without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-003",
+    "Scenario Name": "Doctor Management Listing & Pagination - Shows All Active/Inactive Doctors, Clear (X) & Pagination",
+    "Test Case Description": "Verify that Doctor Management displays all Active and Inactive doctors under \"All Department / All Status\", provides Clear (X) search reset, and supports pagination/page-size.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is logged in and both Active and Inactive doctors exist (> page size).",
+    "Test Data": "Search Query: Vaani",
+    "Test Steps": "1. Open \"Doctor Management list\".\n2. Verify that both Active and Inactive doctors display without hiding Inactive doctors until filtered.\n3. Wait for the \"Doctor Management\" screen to load.\n4. Enter \"Vaani\" in Search.\n5. Clear \"(X)\" icon appears.\n6. Click \"(X)\" to restore full list.\n7. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".\n8. Open \"Doctor Management list\" from the navigation menu.",
+    "Expected Result": "- Default All Department + All Status displays every active and inactive doctor with working Pagination/Page Size and Clear \"(X)\" search reset.\n- Pagination controls and Page Size selector navigate deterministically across pages."
+  },
+  {
+    "Scenario ID": "HMS-DOC-004",
+    "Scenario Name": "Doctor Future Joining Date Rule - Blocks Public Booking Before Joining Date",
+    "Test Case Description": "Verify that a doctor whose Joining Date is set in the future is hidden/unbookable on the Home Page until their joining date arrives.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin creates/edits a doctor with Joining Date = 15 days from today and configures weekly availability.",
+    "Test Data": "Attempted Booking Date: Tomorrow (before Joining Date)",
+    "Test Steps": "1. Open Doctor Management.\n2. Set Dr. Neha Kulkarni's Joining Date to 15 days in the future and configure weekly availability.\n3. Open HMS Home Page.\n4. Open \"Book Appointment\" / Doctor Listing.\n5. Search for \"Dr. Neha Kulkarni\".\n6. Inspect tomorrow's slots.\n7. Verify that no slots are available for booking before the configured Joining Date.",
+    "Expected Result": "- Doctors with a future Joining Date do not expose bookable slots for dates earlier than their Joining Date."
+  },
+  {
+    "Scenario ID": "HMS-DOC-005",
+    "Scenario Name": "Staff/Doctor Identity Document Upload - PDF File Displays Uploaded & Enforces Mandatory Multi-Doc",
+    "Test Case Description": "Verify that uploading a valid PDF in Identity displays the uploaded filename/status, and mandatory document inputs block stepping forward if empty.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens Staff/Doctor Profile to Identity / Documents step.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: government_id.pdf",
+    "Test Steps": "1. Click \"Doctor Management\".\n2. Click \"Add Doctor\".\n3. Navigate to the Identity and Documents section.\n4. Wait for the \"Professional Documents\" screen to load.\n5. Select ID Proof type.\n6. Upload valid PDF \"government_id.pdf\" (500 KB).\n7. Verify that the uploaded PDF row appears inside the document list immediately.\n8. Proceed to mandatory \"Multiple Documents\" field without attaching any file.\n9. Click \"Next\".\n10. Verify that wizard progression halts with mandatory file validation.",
+    "Expected Result": "- Uploaded row \"government_id.pdf\" renders with preview and delete icons right inside the table before pressing Save.\n- Inline red error \"This field is required\" displays below Multiple Documents and navigation remains on the current wizard step."
+  },
+  {
+    "Scenario ID": "HMS-DOC-006",
+    "Scenario Name": "Doctor Permanent Address Dropdowns - Provides Country, State & City Cascading Dropdowns",
+    "Test Case Description": "Verify that both Current Address and Permanent Address in Doctor Profile provide cascading Country, State, and City dropdown selectors.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Address step.",
+    "Test Data": "State: Karnataka\nCity: Bengaluru",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Click \"Add Doctor\".\n3. Open Address section.\n4. Inspect the \"Permanent Address\" section.\n5. Click Country.\n6. Select \"India\".\n7. Inspect the Permanent \"State\" and \"City\" fields.\n8. Verify that both State and City render populated dropdowns (not plain text inputs) matching Karnataka.\n9. Open Bengaluru.",
+    "Expected Result": "- Permanent Address provides Country, State, and City dropdowns matching Current Address behavior."
+  },
+  {
+    "Scenario ID": "HMS-DOC-007",
+    "Scenario Name": "Doctor Same-Name Multi-Department Search - Returns All Matching Doctors",
+    "Test Case Description": "Verify that searching by a doctor name shared across different departments returns all matching doctor records.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Two doctors named \"Dr. Anil Kumar Verma\" exist (one in Cardiology, one in Neurology).",
+    "Test Data": "Target Screen: Doctor Management list\nDoctor Name: Dr. Anil Kumar Verma\nDepartment: Cardiology",
+    "Test Steps": "1. Click \"Doctor Management\" in the sidebar.\n2. Wait for the \"Doctor Management\" screen to load.\n3. Enter \"Anil Kumar Verma\" in the \"Search Doctor\" input box.\n4. Wait for the \"Doctor Management list\" screen to load.\n5. Verify that multiple clinicians sharing the same full name across different departments remain visible.",
+    "Expected Result": "- Both \"Dr. Anil Kumar Verma (Cardiology)\" and \"Dr. Anil Kumar Verma (Neurology)\" render in the search results table without deduplicating distinct department profiles."
+  },
+  {
+    "Scenario ID": "HMS-DOC-008",
+    "Scenario Name": "Doctor Registration Upload Dropzone - Entire Container Clickable to Open File Picker",
+    "Test Case Description": "Verify that clicking anywhere inside the Attachment or Digital Signature upload zone opens the file picker dialog.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Doctor Registration\" to Documents / Digital Signature upload step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-008",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Navigate to Attachment and Digital Signature upload boxes.\n4. Click the empty area/icon inside the upload dropzone container (outside the \"Browse\" text button).\n5. Repeat on clicking \"Browse\" directly.\n6. Verify that the OS file selection dialog opens immediately in both cases without delay.",
+    "Expected Result": "- Both the full dropzone container and the \"Browse\" button immediately launch the native file picker with zero noticeable lag."
+  },
+  {
+    "Scenario ID": "HMS-DOC-009",
+    "Scenario Name": "Doctor Add Document Button - Prompts Clearly or Opens File Picker Without False Missing Error",
+    "Test Case Description": "Verify that clicking \"Browse\" opens file selection promptly and \"Add Document\" validates with zero errors against missing document selection.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on Add Doctor to Professional Documents step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-009",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Open \"Professional Documents\".\n3. Select Document Type.\n4. Click \"Browse\".\n5. Verify that immediate picker open.\n6. Click \"Add Document\" when no file is chosen vs after choosing a file.\n7. Clear inline prompt guides attaching a file (or opens picker per UI flow) and adds with zero errors once attached.",
+    "Expected Result": "- Clicking \"Browse\" opens dialog immediately, and \"Add Document\" validates file attachment deterministically and attaches valid files without blockers."
+  },
+  {
+    "Scenario ID": "HMS-DOC-010",
+    "Scenario Name": "Doctor Gov ID Upload Validation - Clears Required Error Immediately After Uploading Document",
+    "Test Case Description": "Verify that uploading a valid Government ID document immediately clears the \"Government ID document is required\" validation error and allows proceeding.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on \"Create Doctor Profile\" to \"Professional Documents\" and has valid Address Country fields filled.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: pan_card.pdf",
+    "Test Steps": "1. Navigate to \"Professional Documents\" in Add Doctor.\n2. Wait for the \"Doctor Management\" screen to load.\n3. Review the target fields and active options on \"Doctor Management list\".\n4. Verify that if Nationality/Address fields do not conflict redundantly.\n5. Upload \"pan_card.pdf\" in the mandatory Government ID Document field.\n6. Verify that business rule validation triggers an inline warning for \"Government ID document is required\" on \"Doctor Management list\".",
+    "Expected Result": "- Uploading a valid Government ID document clears required-field validation instantly and allows step progression.\n- \"Government ID document is required\" clears immediately and clicking \"Next\" advances to the next step."
+  },
+  {
+    "Scenario ID": "HMS-DOC-011",
+    "Scenario Name": "Doctor Registration Text Limits & Direct Stepper Navigation - Enforces Max Lengths & Stepper Clicks",
+    "Test Case Description": "Verify that Name/Emergency Contact/Bio inputs enforce character limits and the Doctor Registration stepper allows navigating completed/validated steps directly.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Doctor Management\" to \"Add Doctor\".",
+    "Test Data": "First/Last Name: > 100 characters",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Open Personal Information.\n3. Attempt to enter 120 characters in First Name and 550 characters in Professional Biography.\n4. Verify that max character limits block or validate excessive input.\n5. Complete Step 1.\n6. Click Step 1 and validated next step headers directly in the stepper bar.\n7. Verify that the updated state for \"Next\" appears accurately on \"Doctor Management list\".",
+    "Expected Result": "- Text fields enforce defined character caps with validation feedback, and clickable stepper headers support direct forward/backward navigation once current step validates, and no incorrect charge or duplicate payment is recorded.\n- Stepper allows smooth direct navigation across accessible steps without locking users strictly to \"Next\"."
+  },
+  {
+    "Scenario ID": "HMS-DOC-012",
+    "Scenario Name": "Doctor Profile Photo & License Upload - Rejects Oversized (>2 MB/20 MB) & Unsupported (GIF/SVG) Formats",
+    "Test Case Description": "Verify that Profile Photo (<=2 MB, PNG/JPG/JPEG/WEBP) and Mandatory Documents (<=20 MB, PDF/JPG/PNG) reject oversized or unsupported GIF/SVG files.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on Add Doctor to Personal Photo & Professional Documents steps.",
+    "Test Data": "Unsupported: avatar.gif, logo.svg\nOversized Doc: 30 MB PDF (limit 20 MB)",
+    "Test Steps": "1. Click \"Doctor Management\".\n2. Click \"Add Doctor\".\n3. Wait for the \"Doctor Management\" screen to load.\n4. Upload an oversized 5 MB JPG image or unsupported \".gif\"/\".svg\" file in \"Profile Photo\".\n5. Verify that Photo upload rejects oversized or unsupported file formats immediately.\n6. Navigate to \"Professional Documents\".\n7. Upload a 30 MB PDF (over 20 MB limit) or \".gif\"/\".svg\" file.\n8. Verify that Document upload displays specific size and format validation messages.",
+    "Expected Result": "- Profile Photo rejects oversized or disallowed files with \"File size must not exceed 2 MB.\" or \"Only PNG, JPG, JPEG, and WEBP image formats are allowed.\" and discards the attachment.\n- Professional Documents shows explicit error \"File size must not exceed 20 MB.\" or allowed formats notice, without throwing HTTP 413 or \"Something went wrong.\"."
+  },
+  {
+    "Scenario ID": "HMS-DOC-013",
+    "Scenario Name": "Doctor Documents Preview & Duplicate Type Guard - Consistent Preview Modal Without Forced Download",
+    "Test Case Description": "Verify that all uploaded professional documents show a \"Preview\" button that opens an in-app preview (never unexpected auto-download) and prevents duplicate document types.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin uploads Medical License and Additional Professional Documents on Add/Edit Doctor.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: license.pdf",
+    "Test Steps": "1. Open \"Doctor Management list\".\n2. Upload \"license.pdf\" and \"degree.jpg\" in Professional Documents.\n3. Open \"Additional Professional Documents\".\n4. Attempt to select an already-added Document Type.\n5. Verify that duplicate/invalid selection is blocked.\n6. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n7. Click \"Preview\" on both PDF and JPG items.\n8. Verify that auth controls enforce access rules for each opens inside preview on \"Doctor Management list\".",
+    "Expected Result": "- Duplicate Document Types are blocked; every uploaded document offers a consistent \"Preview\" button opening inline preview with zero errors.\n- On the \"Doctor Management list\" screen, eVERY uploaded document displays a \"Preview\" button without any validation or server error.\n- Each opens inside a preview modal/viewer tab without forcing unwanted direct file download."
+  },
+  {
+    "Scenario ID": "HMS-DOC-014",
+    "Scenario Name": "Emergency Contact Name Validation - Rejects Numeric-Only Values",
+    "Test Case Description": "Verify that entering numeric digits (e.g., \"998877\") in Emergency Contact Name fails validation during Doctor/Staff registration.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on Add Doctor / Add Staff to Contact / Emergency Information step.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: 998877",
+    "Test Steps": "1. Open Add Doctor / Add Staff.\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open Emergency Contact section.\n4. Enter \"998877\" into \"Emergency Contact Name\".\n5. Fill valid Emergency Mobile and Relationship.\n6. Click \"Next\" / \"Save\".\n7. Verify that validation blocks numeric-only Emergency Contact Name with a clear error message.",
+    "Expected Result": "- Emergency Contact Name rejects purely numeric strings and enforces alphabetic contact name characters, and no unhandled UI or backend error occurs."
+  },
+  {
+    "Scenario ID": "HMS-DOC-015",
+    "Scenario Name": "Doctor Registration DOB Picker & Location Cascade - Chronological Years, Flags & Cascading City",
+    "Test Case Description": "Verify that DOB calendar lists years chronologically with dropdown indicators and Country dropdown (with flags) cascades into State and City dropdowns.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Create Doctor Profile\".",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: India",
+    "Test Steps": "1. Open \"Create Doctor Profile\".\n2. Click \"Date of Birth\" calendar.\n3. Inspect Year and Month selectors for chronological sequence.\n4. Clear dropdown arrows.\n5. Navigate to Address.\n6. Click Country dropdown.\n7. Select \"India\".\n8. Inspect Country flags.\n9. Verify that \"State\" and \"City\" dropdowns populate dynamically for India.",
+    "Expected Result": "- DOB Year selector lists ordered chronological years with dropdown indicators; Country displays flags and cascades accurately into State and City dropdowns."
+  },
+  {
+    "Scenario ID": "HMS-DOC-016",
+    "Scenario Name": "Doctor Registration Employment & Department Rules - Blocks Future Joining Date & Enforces Language Limit",
+    "Test Case Description": "Verify that Doctor Registration restricts invalid future Joining Dates (if disallowed) and validates Language Spoken selections appropriately.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Create Doctor Profile\" to Employment Info & Department Assignment.",
+    "Test Data": "Language Spoken: Select multiple/all options to test limit",
+    "Test Steps": "1. Open \"Create Doctor Profile\".\n2. Open Employment Information.\n3. Attempt to select a future Joining Date (+4 months).\n4. Observe validation behavior against configured Joining Date rule.\n5. Navigate to Department Assignment.\n6. Open \"Language Spoken\" multi-select and check maximum selection behavior.\n7. Verify that invalid future Joining Dates (per rule) and excessive Language Spoken selections trigger appropriate validation boundaries.",
+    "Expected Result": "- Joining Date validates against permitted date bounds and Language Spoken enforces its configured selection rules with zero errors."
+  },
+  {
+    "Scenario ID": "HMS-DOC-017",
+    "Scenario Name": "Doctor Contact & Emergency Fields Validation - Exact 10-Digit Mobile, Optional Indicator, Numeric PIN",
+    "Test Case Description": "Verify that Contact Mobile restricts to 10 digits, PIN Code accepts numbers only, and optional Alternate Mobile omits the mandatory asterisk.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on Add Doctor to Contact Information.",
+    "Test Data": "Invalid PIN: ABC411",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Open Contact Information.\n3. Attempt entering 12 digits in \"Mobile Number\".\n4. Verify that input caps at 10 digits.\n5. Inspect \"Alternate Mobile\" label for absence of mandatory \"*\" (if optional) and leave it blank.\n6. Enter \"ABC411\" in \"PIN Code\".\n7. Click \"Next\".\n8. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".",
+    "Expected Result": "- Mobile enforces exact 10 digits, optional Alternate Mobile displays without \"*\" and can be skipped, and PIN accepts digits only.\n- On the \"Doctor Management list\" screen, numeric-only PIN Code validation blocks letters without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-018",
+    "Scenario Name": "Doctor Address Fields Structure - Includes Current/Permanent Line 1 & 2, Postal Code & Same-As",
+    "Test Case Description": "Verify that Doctor Address Information matches Staff Address structure with Line 1, Line 2, City, State, Country, Postal Code for Current and Permanent Address.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on \"Add Doctor\" to Address Information step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-018",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Navigate to \"Address Information\".\n4. Inspect all visible sections and field labels.\n5. Review the target fields and active options on \"Doctor Management list\".\n6. Verify that separate Current Address and Permanent Address blocks exist with Line 1, Line 2, City, State, Country, Postal Code, plus \"Same as Current Address\" checkbox.",
+    "Expected Result": "- Address step includes complete Current Address, Permanent Address, and \"Same as Current Address\" checkbox."
+  },
+  {
+    "Scenario ID": "HMS-DOC-019",
+    "Scenario Name": "Staff/Doctor Employment Spelling & Labels - Correct Spelling and Emergency Contact Relationship Label",
+    "Test Case Description": "Verify that \"Employment Information\", \"Employment Type\", and \"Emergency Contact Relationship\" labels are spelled and worded accurately without typos.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens Add Doctor and Add Staff wizards.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: Employment Information",
+    "Test Steps": "1. Open \"Add Staff\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open Step 2.\n4. Inspect the heading.\n5. Type label for exact spelling (\"Employment Information\", \"Employment Type\", not \"Employeement\").\n6. Open \"Add Doctor\".\n7. Open Contact / Emergency section.\n8. Inspect the relationship label.\n9. Verify that label reads \"Emergency Contact Relationship\" rather than ambiguous \"Relationship\".",
+    "Expected Result": "- All headings and field labels spell \"Employment Information\", \"Employment Type\", and \"Emergency Contact Relationship\" accurately."
+  },
+  {
+    "Scenario ID": "HMS-DOC-020",
+    "Scenario Name": "Doctor Personal Information Nationality Field - Visible and Selectable in Step 1",
+    "Test Case Description": "Verify that Step 1 Personal Information of Add Doctor includes the Nationality selector.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Step 1 Personal Information.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-020",
+    "Test Steps": "1. Click \"Doctor Management\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open \"Add Doctor\".\n4. Inspect all fields in Step 1 Personal Information.\n5. Review the target fields and active options on \"Doctor Management list\".\n6. Verify that \"Nationality\" field is present and allows selecting \"Indian\".",
+    "Expected Result": "- Nationality field displays in Step 1 Personal Information and saves selected nationality."
+  },
+  {
+    "Scenario ID": "HMS-DOC-021",
+    "Scenario Name": "Inactivating Doctor/Department With Upcoming Bookings - Displays Warning Confirmation With Count",
+    "Test Case Description": "Verify that marking a Doctor or Department Inactive when future appointments exist displays a warning/confirmation showing affected appointment count.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Active doctor \"Dr. Rajesh Kumar Sharma\" has 2 future confirmed appointments.",
+    "Test Data": "Target Status Change: Active to Inactive",
+    "Test Steps": "1. Open \"Doctor Management\" (or \"Department Management\").\n2. Wait for the \"Doctor Management\" screen to load.\n3. Edit \"Dr. Rajesh Kumar Sharma\" (who has future bookings), toggle Status to \"Inactive\".\n4. Click \"Save\".\n5. Inspect the system warning/confirmation dialog.\n6. Review the target fields and active options on \"Doctor Management list\".\n7. Verify that it alerts the Admin of the upcoming bookings (e.g., \"This doctor has 2 upcoming appointments.\") instead of silently inactivating.",
+    "Expected Result": "- System blocks or prompts explicit Admin confirmation listing upcoming affected appointments before setting Doctor/Department to Inactive."
+  },
+  {
+    "Scenario ID": "HMS-DOC-022",
+    "Scenario Name": "Edit Doctor Profile Documents - Displays Previously Uploaded Additional Documents",
+    "Test Case Description": "Verify that opening an existing doctor in Edit mode displays all previously uploaded Additional Professional Documents.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor was registered with Additional Professional Documents attached.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-022",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Click \"Edit\" on the doctor who has uploaded additional documents.\n3. Wait for the \"Doctor Management\" screen to load.\n4. Navigate to \"Professional Documents\".\n5. Open \"Additional Professional Documents\".\n6. Inspect the existing documents list.\n7. Verify that \"fellowship_cert.pdf\" is listed with View/Preview/Remove actions rather than appearing blank.",
+    "Expected Result": "- Edit Doctor mode loads and renders all previously saved Additional Professional Documents accurately."
+  },
+  {
+    "Scenario ID": "HMS-DOC-023",
+    "Scenario Name": "Doctor Available for Appointment Toggle = No - Hides Doctor From Booking Listing",
+    "Test Case Description": "Verify that setting \"Available for Appointment = No\" hides the doctor from patient appointment booking screens.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor \"Dr. Priya Kulkarni\" exists and is set to \"Available for Appointment = No\".",
+    "Test Data": "Available for Appointment: No",
+    "Test Steps": "1. Open Doctor Management.\n2. Wait for the \"Doctor Management\" screen to load.\n3. Edit \"Dr. Priya Kulkarni\", set \"Available for Appointment = No\".\n4. Click the \"Save\" button.\n5. Open the HMS Website / Patient Portal \"Book Appointment\" doctor listing.\n6. Search for \"Dr. Priya Kulkarni\" and filter by her department.\n7. Verify that she does not appear in public bookable doctor listings while Availability is disabled.",
+    "Expected Result": "- Doctors with \"Available for Appointment = No\" are excluded from bookable appointment listings across Portal and Website."
+  },
+  {
+    "Scenario ID": "HMS-DOC-024",
+    "Scenario Name": "Doctor Name Field Stored XSS Prevention - Rejects Script Tags on Create Doctor",
+    "Test Case Description": "Verify that entering HTML/script XSS strings in Create Doctor Name fields is rejected with validation and never saved/rendered.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Doctor Management\" to \"Add Doctor\".",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: <script>alert('XSS')</script>",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open \"Add Doctor\".\n4. Enter \"<script>alert('XSS')</script>\" in \"First Name\".\n5. Complete mandatory inputs.\n6. Attempt Save/Next.\n7. Inspect validation response.\n8. Open Doctor Listing / Patient Portal.\n9. Verify that XSS/HTML tags are rejected with field validation and never saved to DB or rendered as script.",
+    "Expected Result": "- Doctor Name rejects HTML/script payloads with zero errors via server & client validation; zero stored XSS."
+  },
+  {
+    "Scenario ID": "HMS-DOC-025",
+    "Scenario Name": "Doctor OPD Final Review Action - Review All Sections Opens Consolidated Summary",
+    "Test Case Description": "Verify that clicking \"Review All Sections\" in Doctor OPD Digital Signature / Final Review displays a consolidated clinical summary rather than a dummy toast.",
+    "Pre-conditions": "- Doctor is logged in to HMS.\n- HMS website is accessible.\n- Doctor is logged in and reviewing an active OPD consultation at the Final Review / Signature step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-025",
+    "Test Steps": "1. Click \"Review All Sections\".\n2. Wait for the \"Doctor Management list\" screen to load.\n3. Review the target fields and active options on \"Doctor Management list\".\n4. Observe the system response and displayed status message.\n5. Confirm the updated state visible on \"Doctor Management list\".\n6. Verify that a consolidated review view/modal opens summarizing completed and missing sections instead of showing only a static toast.",
+    "Expected Result": "- \"Review All Sections\" opens a consolidated summary highlighting entered vitals, diagnosis, medications, and any missing fields before signing."
+  },
+  {
+    "Scenario ID": "HMS-DOC-026",
+    "Scenario Name": "Doctor Registration Field Validation & Error Specificity - Highlights Missing/Invalid Fields Clear of Generic Toast",
+    "Test Case Description": "Verify that submitting invalid or incomplete Doctor Registration fields shows field-specific validation messages rather than allowing invalid submission or showing only \"Something went wrong\".",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\".",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-026",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open \"Add Doctor\".\n4. Leave mandatory fields empty / enter invalid email (\"test@\").\n5. Click Save/Next.\n6. Inspect field-level inline error banners.\n7. Verify that exact field errors appear beside invalid inputs and no vague \"Something went wrong\" error replaces meaningful validation.",
+    "Expected Result": "- All invalid or missing Doctor Registration fields display clear field-level validation text pinpointing the exact issue, and no duplicate or invalid record is saved."
+  },
+  {
+    "Scenario ID": "HMS-DOC-027",
+    "Scenario Name": "Doctor Registration Rules - Auto-Capitalization, Single/Spouse Guard & Inline Qualification Error",
+    "Test Case Description": "Verify first-letter capitalization rules, Marital Status = Single blocking Emergency Relation = Husband, and Higher Qualification error placement.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\".",
+    "Test Data": "Marital Status: Single + Emergency Relation: Husband\nHigher Qualification: Blank",
+    "Test Steps": "1. Open \"Doctor Management list\".\n2. Enter lowercase \"rahul\" in First Name.\n3. Verify that auto-capitalization rules format Doctor Name inputs consistently.\n4. Set Marital Status = \"Single\".\n5. Attempt selecting Emergency Relation = \"Husband\".\n6. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n7. Leave \"Higher Qualification\" blank.\n8. Select Primary Specialization.\n9. Click Save/Next.\n10. Verify that business rule validation triggers an inline warning for \"Higher Qualification is required\" on \"Doctor Management list\".",
+    "Expected Result": "- First-letter capitalization applies consistently, Marital Status = Single disallows Husband relation, and \"Higher Qualification is required\" appears strictly under Higher Qualification, and no unhandled UI or backend error occurs.\n- On the \"Doctor Management list\" screen, validation blocks inconsistent spouse selection without any validation or server error.\n- \"Higher Qualification is required\" renders directly beneath \"Higher Qualification\" (not under Primary Specialization)."
+  },
+  {
+    "Scenario ID": "HMS-DOC-028",
+    "Scenario Name": "Primary Specialization Dropdown - Includes Cardiology Alongside Configured Specialties",
+    "Test Case Description": "Verify that \"Cardiology\" appears in the Primary Specialization dropdown when adding a Doctor.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Active \"Cardiology\" department exists in Department Management.\n- Hospital Admin opens \"Add Doctor\".",
+    "Test Data": "Target Screen: Doctor Management list\nDepartment: Cardiology",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Click \"Add Doctor\".\n4. Navigate to Professional Information.\n5. Open the \"Primary Specialization\" dropdown.\n6. Verify that \"Cardiology\" is listed and selectable.",
+    "Expected Result": "- \"Cardiology\" displays in Primary Specialization matching active hospital specialties and saves per field rules."
+  },
+  {
+    "Scenario ID": "HMS-DOC-029",
+    "Scenario Name": "Doctor Management View Action - Opens Complete Doctor Profile Without Load Failure",
+    "Test Case Description": "Verify that clicking \"View\" in the Doctor Management table Action column opens the complete doctor profile without \"Unable to load doctor profile.\".",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Existing doctors are listed in Doctor Management.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-029",
+    "Test Steps": "1. Click the \"View\" icon in the Action column of an active doctor row.\n2. Wait for the \"Doctor Management list\" screen to load.\n3. Review the target fields and active options on \"Doctor Management list\".\n4. Observe the system response and displayed status message.\n5. Confirm the updated state visible on \"Doctor Management list\".\n6. Verify that Personal, Employment, Specialization, Consultation Fee, and Document details render with zero \"Unable to load doctor profile.\" error.",
+    "Expected Result": "- Doctor Profile detail screen loads with full configuration and documents populated."
+  },
+  {
+    "Scenario ID": "HMS-DOC-030",
+    "Scenario Name": "Mandatory Document Type Validation - Blocks Next Step Until Document Type Is Selected",
+    "Test Case Description": "Verify that attempting to proceed past Professional Documents without choosing a Document Type triggers \"Document Type is required.\".",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Professional Documents step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-030",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Navigate to \"Professional Documents\".\n4. Leave mandatory \"Document Type\" unselected.\n5. Click \"Next\".\n6. Inspect validation response.\n7. Verify that progression is blocked and \"Document Type is required.\" displays clearly.",
+    "Expected Result": "- Wizard remains on Professional Documents and displays \"Document Type is required.\" until a valid Document Type is chosen."
+  },
+  {
+    "Scenario ID": "HMS-DOC-031",
+    "Scenario Name": "Doctor DOB Minimum Age Validation - Rejects Current Date as Doctor Date of Birth",
+    "Test Case Description": "Verify that entering today's current date as Doctor Date of Birth fails minimum-age validation with zero errors.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Personal Information.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: Date of Birth",
+    "Test Steps": "1. Open \"Add Doctor\".\n2. Wait for the \"Doctor Management\" screen to load.\n3. Open Personal Information.\n4. Enter/select today's date in the \"Date of Birth\" field.\n5. Click \"Next\".\n6. Review the target fields and active options on \"Doctor Management list\".\n7. Verify that validation rejects current date DOB because a doctor must satisfy minimum professional age requirements.",
+    "Expected Result": "- Form blocks current date or underage DOB values with an age/DOB validation error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-032",
+    "Scenario Name": "Doctor Availability Field Default State - Renders Unselected Until Explicit User Choice",
+    "Test Case Description": "Verify that the Availability control on the Doctor Registration form does not appear pre-selected/highlighted before user interaction.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin opens \"Add Doctor\" to Consultation / Availability step.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-032",
+    "Test Steps": "1. Click \"Doctor Management\".\n2. Click \"Add Doctor\".\n3. Navigate to the \"Consultation & Availability\" section.\n4. Inspect initial highlight styling on the \"Availability\" option cards before clicking any option.\n5. Verify that the Availability control renders with no option pre-highlighted by default.",
+    "Expected Result": "- All Availability radio/card choices display in neutral unselected visual state until the Admin explicitly clicks a selection."
+  },
+  {
+    "Scenario ID": "HMS-DOC-033",
+    "Scenario Name": "Doctor list search - partial and full name",
+    "Test Case Description": "Verify that searching the Doctor list by first name only, last name only and by the complete name (first + middle + last) returns the correct record each time.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Search 1: first name\nSearch 2: last name\nSearch 3: first + middle + last name\nScenario Reference: HMS-DOC-033",
+    "Test Steps": "1. Open Doctor Management from the menu.\n2. Type only the first name of Anil Kumar Verma in the search box.\n3. Press Enter.\n4. Clear the box.\n5. Type only the last name.\n6. Clear the box.\n7. Type the complete name with middle name.\n8. Note the records shown each time.\n9. Verify that list filtering, search updates, and visible record counts match active criteria on \"Doctor Management list\".\n10. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".\n11. Verify that zero entry is missing from the results.",
+    "Expected Result": "- Each search returns Anil Kumar Verma and any other records that match.\n- The complete name search returns the exact record.\n- On the \"Doctor Management list\" screen, no record is missing from the results without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-034",
+    "Scenario Name": "Doctor list search - letter case and spaces",
+    "Test Case Description": "Verify that the Doctor list search ignores letter case and extra spaces before/after the text.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Inputs: lowercase, UPPERCASE, \" name \"\nScenario Reference: HMS-DOC-034",
+    "Test Steps": "1. Open Doctor Management from the menu.\n2. Type the name of Anil Kumar Verma in all lowercase.\n3. Type the same name in all UPPERCASE.\n4. Type the name with two spaces before and after it.\n5. Note the result for each attempt.\n6. Verify that validation rules prevent invalid or conflicting data from being submitted on \"Doctor Management list\".\n7. Verify that \"Doctor Management list\" renders a clear empty-state notice when zero matching entries are returned.",
+    "Expected Result": "- Result is the same record for all three attempts, and no duplicate or invalid record is saved.\n- Extra spaces do not cause \"No records found\"."
+  },
+  {
+    "Scenario ID": "HMS-DOC-035",
+    "Scenario Name": "Doctor list search - no match and special characters",
+    "Test Case Description": "Verify that the Doctor list search shows a proper \"No records found\" message for a name that does not exist and does not break for special characters.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Query 1: ZzzDoctor404\nQuery 2: $#DOC_SYM",
+    "Test Steps": "1. Open Doctor Management from the menu.\n2. Type a name that does not exist, e.g. Zzzxyz Qwerty.\n3. Observe the screen.\n4. Type special characters @#$%^&*<> (special symbol string).\n5. Observe the screen.\n6. Verify that a clear \"No records found\" (or similar) message renders visibly on the interface.\n7. Verify that the list excludes non-matching entries.\n8. Verify that the action is blocked on \"Doctor Management list\" with an explanatory error state for the user.",
+    "Expected Result": "- A clear \"No records found\" (or similar) message is shown.\n- The list is not shown with unrelated records.\n- No error page, blank screen or technical error appears for special characters."
+  },
+  {
+    "Scenario ID": "HMS-DOC-036",
+    "Scenario Name": "Doctor list search - Clear (X) option",
+    "Test Case Description": "Verify that a Clear (X) icon appears in the Doctor list search box and that clicking it removes the text and shows the full list again.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Doctor Search Query: Anil\nRecord: Dr. Anil Kumar Verma",
+    "Test Steps": "1. Click \"Doctor Management\" in the sidebar.\n2. Wait for the \"Doctor Listing\" screen to load.\n3. Enter \"Anil\" into the \"Search Doctor\" input field.\n4. Verify that the Clear \"X\" control renders inside the search field.\n5. Click the Clear \"X\" control.\n6. Wait for the \"Doctor Listing\" screen to load.\n7. Verify that the search text clears and unfiltered Doctor records restore.\n8. Verify that Doctor List pagination returns to the first page.",
+    "Expected Result": "- The \"X\" icon appears inside the right edge of \"Search Doctor\" immediately upon typing \"Anil\".\n- The \"Search Doctor\" field value becomes, the \"X\" icon hides, and all 38 doctor rows render in the table.\n- Pagination resets to \"Page 1\" instead of remaining stuck on a filtered subset."
+  },
+  {
+    "Scenario ID": "HMS-DOC-037",
+    "Scenario Name": "Doctor list search - state after leaving the page",
+    "Test Case Description": "Verify that the search text and filters of the Doctor list are reset when the user opens another menu and comes back.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Doctor Search Query: Verma\nSwitch Screen: Staff Management then back",
+    "Test Steps": "1. Open Doctor Management from the menu.\n2. Type a name in the search box.\n3. Select any filter.\n4. Click a different menu item (for example Dashboard).\n5. Return back to the Doctor list screen.\n6. Check the search box, the filter and the page number.\n7. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n8. Verify that filter presents its default value.\n9. Verify that list is on page 1 and presents all entries.",
+    "Expected Result": "- On the \"Doctor Management list\" screen, search box is empty without error.\n- On the \"Doctor Management list\" screen, filter shows its default value without any validation or server error.\n- List is on page 1 and shows all records."
+  },
+  {
+    "Scenario ID": "HMS-DOC-038",
+    "Scenario Name": "Doctor list pagination - navigation",
+    "Test Case Description": "Verify that pagination in the Doctor list loads the correct records when page 2, 3, last page, Next and Previous are used.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Screen: Doctor Directory\nTotal Doctor Rows: 38\nPage Size: 10 (4 pages)",
+    "Test Steps": "1. Open Doctor Management (All Department, All Status).\n2. Wait for the \"Doctor Management\" screen to load.\n3. Ensure the list has 39 records (page size 10).\n4. Click page 2.\n5. Click page 3.\n6. Click Next.\n7. Click Previous.\n8. Click the last page.\n9. Note the records and the count text on each page.\n10. Verify that submitted updates persist across the \"Doctor Management list\" workflow without unintended changes.\n11. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".\n12. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".",
+    "Expected Result": "- Each page shows different records (no repetition, none missing).\n- Count text matches, e.g. \"Showing 11-20 of 39\".\n- On the \"Doctor Management list\" screen, last page shows the remaining 9 records without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-039",
+    "Scenario Name": "Doctor list pagination - page size",
+    "Test Case Description": "Verify that the page size option (10/25/50/100) works in the Doctor list and the count text is updated.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Screen: Doctor List\nTotal Rows: 38\nPage Sizes: 10, 25, 50, 100",
+    "Test Steps": "1. Open Doctor Management (All Department, All Status).\n2. Change page size to 25.\n3. Note the records and the count text.\n4. Change page size to 50.\n5. Change 100.\n6. Go back to 10.\n7. Verify that list filtering, search updates, and visible record counts match active criteria on \"Doctor Management list\".\n8. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".\n9. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".",
+    "Expected Result": "- Number of rows shown changes as per the page size.\n- Count text and number of pages update per configured rules.\n- The user stays on a valid page after changing the page size."
+  },
+  {
+    "Scenario ID": "HMS-DOC-040",
+    "Scenario Name": "Doctor list pagination - boundaries",
+    "Test Case Description": "Verify the Previous/Next buttons on the first and last page and the count text when the list is empty or has exactly one page of records.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Screen: Doctor List\nBoundary Counts: 0 rows vs 5 rows vs 38 rows",
+    "Test Steps": "1. Open Doctor Management (All Department, All Status).\n2. Open page 1 and check the Previous button.\n3. Go to the last page and check the Next button.\n4. Apply a search that returns 0 records.\n5. Read the count text.\n6. Apply a search that returns 5 records and check the pages.\n7. Verify that validation rules prevent invalid or conflicting data from being submitted on \"Doctor Management list\".\n8. Verify that \"Doctor Management list\" renders a clear empty-state notice when zero matching entries are returned.\n9. Verify that only one page renders visibly on the interface when entries fit on one page.",
+    "Expected Result": "- Previous is disabled on page 1 and Next is disabled on the last page, and no unhandled UI or backend error occurs.\n- Empty list shows \"Showing 0 of 0\" with a no-records message only (not when data is visible).\n- Only one page is shown when records fit on one page, and no duplicate or invalid record is saved."
+  },
+  {
+    "Scenario ID": "HMS-DOC-041",
+    "Scenario Name": "Doctor list pagination - with filter and refresh",
+    "Test Case Description": "Verify that the record count and page remain correct after applying a filter and refreshing the browser page in the Doctor list.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Filter: Status = Inactive\nTarget Page: 2\nAction: Browser Refresh",
+    "Test Steps": "1. Open Doctor Management (All Department, All Status).\n2. Go to page 2.\n3. Apply a status filter.\n4. Note the count text.\n5. Refresh the browser (F5).\n6. Note the count text again.\n7. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n8. Verify that after a filter the list resets to page 1.\n9. Verify that pagination controls display non-overlapping page records with accurate totals on \"Doctor Management list\".",
+    "Expected Result": "- On the \"Doctor Management list\" screen, count text always matches the rows visible without any validation or server error.\n- After a filter the list starts again from page 1.\n- After refresh the count is the same and consistent with the rows."
+  },
+  {
+    "Scenario ID": "HMS-DOC-042",
+    "Scenario Name": "Professional Biography - special character and emoji validation",
+    "Test Case Description": "Verify that the Professional Biography field rejects emojis and unsupported special characters with a clear message and does not accept them on save.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Valid value: MD Cardiologist with 12 years of experience",
+    "Test Steps": "1. Open Doctor Management.\n2. Click Add Doctor.\n3. Open Professional Information.\n4. Type 😀 in the Professional Biography field.\n5. Move to the next field.\n6. Replace it with @#$%^&*.\n7. Fill the other fields per configured rules.\n8. Click Save/Next.\n9. Note the message and whether the record is saved.\n10. Verify that a clear validation message renders visibly on the interface under the Professional Biography field.\n11. Verify that the entry does not persist to storage with these characters.\n12. Verify that zero technical/database error renders on the UI.",
+    "Expected Result": "- A clear validation message is shown under the Professional Biography field, and no unhandled UI or backend error occurs.\n- The record is not saved with these characters.\n- No technical/database error is displayed, and no invalid record is saved on the \"Doctor Management list\" screen."
+  },
+  {
+    "Scenario ID": "HMS-DOC-043",
+    "Scenario Name": "Professional Biography - script and SQL payload security",
+    "Test Case Description": "Verify that HTML/JavaScript and SQL payloads typed in the Professional Biography field are rejected or stored safely and never executed.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Field: Doctor Address\nPayloads: <img src=x onerror=alert(1)>\nOR 1=1--",
+    "Test Steps": "1. Open Doctor Management.\n2. Click Add Doctor.\n3. Open Professional Information.\n4. Type <script>alert(\"x\")</script> in the Professional Biography field.\n5. Click the \"Save\" button.\n6. Open the saved record and every screen where it is shown.\n7. Type ' OR 1=1 -- in the field.\n8. Click the \"Save\" button.\n9. Open the list/search screens again.\n10. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n11. Verify that text fails validation and stays unsaved or shown as plain text.\n12. Verify that zero database error renders visibly and no other data is exposed.\n13. Verify that all other entries remain unchanged.",
+    "Expected Result": "- On the \"Doctor Management list\" screen, no pop-up/script runs anywhere without any validation or server error.\n- Text is rejected or shown as plain text, and no unhandled UI or backend error occurs.\n- No database error appears and no other data is exposed.\n- On the \"Doctor Management list\" screen, all other records remain unchanged without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-044",
+    "Scenario Name": "Professional Biography - length limit boundary",
+    "Test Case Description": "Verify the maximum length of the Professional Biography field: exactly 500 characters is accepted and 501 characters is blocked with a clear message.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Text of 501 characters",
+    "Test Steps": "1. Open Doctor Management.\n2. Click Add Doctor.\n3. Open Professional Information.\n4. Enter exactly 500 characters in the Professional Biography field.\n5. Click the \"Save\" button.\n6. Edit the field.\n7. Enter 501 characters.\n8. Try to save.\n9. Watch the character counter, if any.\n10. Verify that 500 characters pass validation and save in full.\n11. Verify that the action is blocked on \"Doctor Management list\" with an explanatory error state for the user.\n12. Verify that zero error code or truncation error renders on the UI.\n13. Verify that validation rules prevent invalid or conflicting data from being submitted on \"Doctor Management list\".",
+    "Expected Result": "- 500 characters are accepted and saved completely, and no invalid record is saved on the \"Doctor Management list\" screen.\n- 501 characters are blocked (typing stopped or a clear message), and no unhandled UI or backend error occurs.\n- No error code or truncation error is displayed.\n- The full text is visible when the record is opened again, and no duplicate or invalid record is saved."
+  },
+  {
+    "Scenario ID": "HMS-DOC-045",
+    "Scenario Name": "Professional Biography - spaces and valid punctuation",
+    "Test Case Description": "Verify that Professional Biography trims extra spaces, rejects a value made only of spaces (if mandatory) and accepts valid punctuation.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Target Screen: Doctor Management list\nInput / Filter Value: MD Cardiologist with 12 years of experience",
+    "Test Steps": "1. Open Doctor Management.\n2. Click Add Doctor.\n3. Open Professional Information.\n4. Type only spaces in the Professional Biography field and try to save.\n5. Type \" MD Cardiologist with 12 years of experience \" with spaces before and after.\n6. Click the \"Save\" button.\n7. Open the saved record.\n8. Type a value with allowed punctuation such as. - / #.\n9. Click the \"Save\" button.\n10. Verify that only-spaces value fails validation and stays unsaved for a mandatory field.\n11. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n12. Verify that allowed punctuation passes validation.\n13. Verify that saved value renders visibly on the interface exactly as entered (without extra spaces).",
+    "Expected Result": "- Only-spaces value is rejected for a mandatory field, and no unhandled UI or backend error occurs.\n- On the \"Doctor Management list\" screen, spaces before/after are removed when saved without any validation or server error.\n- On the \"Doctor Management list\" screen, allowed punctuation is accepted without any validation or server error.\n- Saved value is shown exactly as entered (without extra spaces)."
+  },
+  {
+    "Scenario ID": "HMS-DOC-046",
+    "Scenario Name": "Mobile number - length, prefix and characters",
+    "Test Case Description": "Verify the mobile number field rejects fewer or more than 10 digits, letters, spaces and symbols, and accepts a valid 10-digit number.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Valid: 9876543210",
+    "Test Steps": "1. Open Add Doctor and go to Contact Information.\n2. Enter 987654321 (9 digits).\n3. Enter 98765432101 (11 digits).\n4. Type abcdefghij.\n5. Enter 9876 543210 with a space.\n6. Enter 9876543210.\n7. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n8. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n9. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n10. Verify that valid number is accepted.",
+    "Expected Result": "- On the \"Doctor Management list\" screen, only 10 digits can be entered without any validation or server error.\n- On the \"Doctor Management list\" screen, 9 digits show a validation message without any validation or server error.\n- On the \"Doctor Management list\" screen, letters, symbols and spaces are not accepted without any validation or server error.\n- On the \"Doctor Management list\" screen, valid number is accepted without error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-047",
+    "Scenario Name": "Required fields, navigation and data kept",
+    "Test Case Description": "Verify that each step shows required-field messages in the right place, step headers allow direct navigation, data stays after Back/Refresh behaviour, and final submit creates the doctor.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-047",
+    "Test Steps": "1. Open Add Doctor.\n2. Click Next on every step with empty fields.\n3. Fill step 1 and 2.\n4. Click Back and step headers.\n5. Complete all steps.\n6. Click the \"Submit\" button.\n7. Open the Doctor list and booking page.\n8. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n9. Verify that direct navigation works.\n10. Verify that data is kept.\n11. Verify that submitted updates persist across the \"Doctor Management list\" workflow without unintended changes.",
+    "Expected Result": "- On the \"Doctor Management list\" screen, messages appear under the right field without any validation or server error.\n- On the \"Doctor Management list\" screen, direct navigation works without error.\n- On the \"Doctor Management list\" screen, data is kept without error.\n- Doctor created with a success message and visible in the list."
+  },
+  {
+    "Scenario ID": "HMS-DOC-048",
+    "Scenario Name": "DOB, joining date, specialization, languages and address",
+    "Test Case Description": "Verify DOB (today rejected, under 18 rejected), joining date rules, Cardiology present in specialization, language selection limit, Nationality shown once, and Country-State-City dependency.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Valid DOB: 15-05-1982\nJoining Date: Past valid date 01-02-2023\nDepartment: Cardiology\nLanguages Spoken: English, Hindi\nCurrent/Permanent Country: India to State: Maharashtra to City: Pune",
+    "Test Steps": "1. Select today's DOB and a DOB giving age 17.\n2. Select future and past joining dates.\n3. Open Primary Specialization.\n4. Select all languages.\n5. Choose India and see states and cities.\n6. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n7. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n8. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n9. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n10. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".",
+    "Expected Result": "- On the \"Doctor Management list\" screen, age validation works without error.\n- On the \"Doctor Management list\" screen, joining date follows the rule without any validation or server error.\n- On the \"Doctor Management list\" screen, cardiology listed without error.\n- On the \"Doctor Management list\" screen, language limit enforced without error.\n- On the \"Doctor Management list\" screen, states/cities depend on selection without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-049",
+    "Scenario Name": "File upload size, type and preview",
+    "Test Case Description": "Verify file upload limits: exact limit accepted, limit + 1 KB rejected, GIF/SVG/EXE rejected, double extension rejected, clear message for 413, preview and edit-page display work.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Doctor Management permission is available.",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-049",
+    "Test Steps": "1. Open \"Doctor Management list\".\n2. Upload a 20 MB PDF.\n3. Upload 20 MB + 1 KB.\n4. Upload.gif.svg, invoice.pdf.exe.\n5. Upload a 30 MB file.\n6. Click Preview.\n7. Edit the doctor and look at documents.\n8. Verify that valid PDF and image attachments upload without rejection.\n9. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n10. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".\n11. Verify that business rule validation triggers an inline warning for \"Doctor Management list\" on \"Doctor Management list\".",
+    "Expected Result": "- On the \"Doctor Management list\" screen, valid files accepted without error.\n- On the \"Doctor Management list\" screen, large/unsupported files rejected with a clear message without any validation or server error.\n- On the \"Doctor Management list\" screen, preview works and does not download without any validation or server error.\n- On the \"Doctor Management list\" screen, uploaded documents are shown on edit without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-050",
+    "Scenario Name": "Emergency Leave Approval Automatic Appointment Cancellation and Patient SMS Cascade",
+    "Test Case Description": "Validate emergency leave impact cascades. Ensures that approving a doctor emergency leave automatically transitions pre-booked appointments to rescheduling queues and dispatches personalized notification links to all affected patients.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- HMS Staging application is online and accessible.\n- Dr. Naveen Mehta has 18 confirmed appointments scheduled for tomorrow.\n- Automated notification gateway is online.",
+    "Test Data": "Leave Date: Tomorrow (Full Day)\nAffected Patients: 18 Appointments",
+    "Test Steps": "1. Click \"Doctor Portal\" in the navigation menu.\n2. Select \"Today's OPD Queue\" from the submenu.\n3. Log in to HMS as a Doctor.\n4. Log in to HMS as a Hospital Administrator.\n5. Verify that doctor schedule calendar updates to \"On Leave - Blocked\".\n6. Inspect the OPD appointment list for tomorrow.\n7. Check the communication dispatch audit logs.\n8. Verify that the \"Doctor Management list\" screen presents the updated data and confirmation feedback.\n9. Verify that the \"Doctor Management list\" screen presents the updated data and confirmation feedback.",
+    "Expected Result": "- All 18 appointments are automatically transitioned to \"Reschedule Required / Doctor Unavailable\" status.\n- Automated SMS/WhatsApp notifications with personalized reschedule links are dispatched to all 18 patients within 60 seconds.\n- Doctor slots for tomorrow are locked from any new booking across Web, Front Office, and Chatbot."
+  },
+  {
+    "Scenario ID": "HMS-DOC-051",
+    "Scenario Name": "Consultation Time Slot Duration Reconfiguration Impact on Future Slots",
+    "Test Case Description": "Validate slot reconfiguration integrity. Ensures changing doctor slot duration from 15 to 30 minutes preserves existing booked timestamps while per configured rules generating unbooked slots at the new interval.",
+    "Pre-conditions": "- Doctor is logged in to HMS.\n- HMS website is accessible.\n- HMS Staging application is online and accessible.\n- Doctor configured with 15-minute slot intervals.\n- 2 appointments booked for 09:00 AM and 09:15 AM tomorrow.\n- Remaining slots unbooked.",
+    "Test Data": "Old Duration: 15 Mins\nNew Duration: 30 Mins",
+    "Test Steps": "1. Click \"Doctor Portal\" in the navigation menu.\n2. Select \"Today's OPD Queue\" from the submenu.\n3. Verify that doctor navigates to Availability Settings > Slot Configuration.\n4. Verify that update slot duration setting from 15 minutes to 30 minutes.\n5. Click the \"Save\" button to store the configuration.\n6. Open the doctor public booking calendar for tomorrow.\n7. Verify that booked and available slot intervals render with clear boundaries.",
+    "Expected Result": "- Existing booked appointments at 09:00 AM and 09:15 AM remain unchanged without data corruption.\n- Subsequent open slots starting from 09:30 AM generate at 30-minute intervals (09:30, 10:00, 10:30).\n- On the \"Doctor Management list\" screen, no overlapping time slots are created without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-052",
+    "Scenario Name": "Automatic Slot Exclusion During Doctor Mandated Lunch and Break Buffer Intervals",
+    "Test Case Description": "Validate clinic wellness schedule rules. Ensures that defining lunch intervals (e.g. 01:00 PM - 02:00 PM) automatically suppresses slot generation during those hours across all public and internal booking channels.",
+    "Pre-conditions": "- Doctor is logged in to HMS.\n- HMS website is accessible.\n- HMS Staging application is online and accessible.\n- Doctor shift configured: 09:00 AM - 05:00 PM.\n- Mandatory lunch buffer: 01:00 PM - 02:00 PM.",
+    "Test Data": "Break Window: 01:00 PM – 02:00 PM (Duration: 60 mins)",
+    "Test Steps": "1. Click \"Doctor Portal\" in the navigation menu.\n2. Select \"Today's OPD Queue\" from the submenu.\n3. Open Doctor Weekly Roster Configuration.\n4. Define working hours 09:00 - 17:00 with lunch break 13:00 - 14:00.\n5. Click \"Save\" on the schedule.\n6. Trigger slot generation batch job.\n7. Open public booking calendar across Portal, Front Office, and WhatsApp.\n8. Inspect slots generated between 12:30 PM and 02:30 PM.\n9. Verify that submitted updates persist across the \"Doctor Management list\" workflow without unintended changes.\n10. Verify that \"Doctor Management list\" renders a clear empty-state notice when zero matching entries are returned.\n11. Verify that the \"Doctor Management list\" screen presents the updated data and confirmation feedback.",
+    "Expected Result": "- Morning slots generate continuously from 09:00 AM up to 12:45 PM.\n- Zero slots exist between 01:00 PM and 02:00 PM; time period is designated as \"Lunch / Break\".\n- Afternoon slots resume promptly at 02:00 PM up to 05:00 PM without any overlapping booking."
+  },
+  {
+    "Scenario ID": "HMS-DOC-053",
+    "Scenario Name": "Role-Based Access Control (RBAC) Cross-Doctor Clinical Record Privacy",
+    "Test Case Description": "Validate clinical data confidentiality and HIPAA/NABH compliance. Ensures doctors cannot inspect private medical notes or diagnosis reports of patients belonging to other specialties without an active formal referral.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- HMS Staging application is online and accessible.\n- Doctor A (Psychiatry) has notes for Patient X.\n- Zero inter-departmental referrals exist.",
+    "Test Data": "Patient UHID: HMS-P-2026-0891\nTarget Record: Psychiatry Clinical Evaluation Note",
+    "Test Steps": "1. Click \"Administration Console\" in the navigation menu.\n2. Select \"Master Configuration\" from the submenu.\n3. Log in to HMS as a Doctor.\n4. Search for Patient X (UHID: HMS-P-2026-0891).\n5. Open the Patient Medical Timeline.\n6. Attempt to open.\n7. Read the confidential Psychiatry consultation note.\n8. Observe access control response.\n9. Verify that restricts access with message with the expected notice.\n10. Verify that protected screens and endpoints block unauthorized navigation after session changes.\n11. Verify that the \"Doctor Management list\" screen presents the updated data and confirmation feedback.",
+    "Expected Result": "- System restricts access with message: \"Access Restricted: You do not have authorization to view sensitive department records without an active referral.\".\n- Unauthorized access attempt is logged in the Security Audit Log, and no unhandled UI or backend error occurs.\n- General vitals and non-restricted medical summaries remain accessible."
+  },
+  {
+    "Scenario ID": "HMS-DOC-054",
+    "Scenario Name": "Prevention of Doctor Double-Rostering Across Overlapping Departments (OPD vs Emergency/ICU)",
+    "Test Case Description": "Validate scheduling conflict prevention. Ensures administration console hard-blocks assigning a doctor to an OPD shift during hours they are already assigned to Emergency / ICU duty.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- HMS Staging application is online and accessible.\n- Dr. Naveen Mehta assigned to Emergency (08:00 AM - 02:00 PM).\n- Admin is publishing OPD Roster.",
+    "Test Data": "Emergency Shift: 08:00 AM – 02:00 PM\nConflicting OPD Attempt: 10:00 AM – 01:00 PM",
+    "Test Steps": "1. Click \"Administration Console\" in the navigation menu.\n2. Select \"Master Configuration\" from the submenu.\n3. Log in to HMS as a Hospital Administrator.\n4. Select Cardiology OPD Department for tomorrow's date.\n5. Select Dr. Naveen Mehta.\n6. Attempt to assign time block 10:00 AM - 01:00 PM.\n7. Click \"Publish Roster Shift\".\n8. Observe scheduling validation alert.\n9. Verify that submitted updates persist across the \"Doctor Management list\" workflow without unintended changes.\n10. Verify that the screen displays \"Conflict Detected: Dr. Naveen Mehta is already assigned to Emergency Duty (08:00 AM - 02:00 PM). Double-rostering is prohibited.\" without server failure.\n11. Verify that the action is blocked on \"Doctor Management list\" with an explanatory error state for the user.",
+    "Expected Result": "- System detects schedule collision and blocks shift assignment.\n- Modal warning is displayed: \"Conflict Detected: Dr. Naveen Mehta is already assigned to Emergency Duty (08:00 AM - 02:00 PM). Double-rostering is prohibited.\".\n- Roster cannot be saved until conflict is resolved by admin."
+  },
+  {
+    "Scenario ID": "HMS-DOC-055",
+    "Scenario Name": "E2E - Admin Creates Department, Onboards Doctor, Configures Availability & Publishes Doctor & Bookable on Public Website",
+    "Test Case Description": "End-to-end verification of hospital setup from creating an Active Department and Doctor to live slot visibility and booking on Website.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is logged in to HMS Admin Portal.",
+    "Test Data": "Doctor: Dr. Meera Nair Sharma\nFee: ₹1,200\nSchedule: Mon-Sat 10:00 AM - 02:00 PM",
+    "Test Steps": "1. Click \"Department Management\".\n2. Click \"Add Department\".\n3. Create Active department \"Endocrinology\".\n4. Open \"Doctor Management\".\n5. Click \"Add Doctor\".\n6. Open register \"Dr. Meera Nair Sharma\" under Endocrinology with valid documents/photo (<=2 MB).\n7. Open \"Register Doctor\".\n8. Configure Doctor Weekly Availability (Mon-Sat, 10:00 AM – 02:00 PM, Past Joining Date, Available = Yes).\n9. Open public Website \"Find Doctors by Department\".\n10. Filter \"Endocrinology\".\n11. Verify that \"Dr. Meera Nair Sharma\" and \"Next Available\" slot are live and bookable.",
+    "Expected Result": "- New department and doctor go live across Home Page, Doctor Listing, Patient Portal, and Front Office immediately after configuration."
+  },
+  {
+    "Scenario ID": "HMS-DOC-056",
+    "Scenario Name": "Block Receptionist, Nurse and Patient From Calling Admin Create/Delete Doctor APIs",
+    "Test Case Description": "Verify strict RBAC enforcement preventing Receptionist, Nurse, or Patient tokens from creating, editing, or deleting doctor master profiles.",
+    "Pre-conditions": "- Front Office Receptionist is logged in to HMS.\n- HMS website is accessible.",
+    "Test Data": "API: POST /api/doctors",
+    "Test Steps": "1. Open \"Doctor Management list\".\n2. Attempt direct navigation to \"/admin/doctors/create\".\n3. Press Enter.\n4. Wait for the \"Doctor Management list\" screen to load.\n5. Verify that access is blocked and direct POST /api/doctors returns HTTP 403 Forbidden.",
+    "Expected Result": "- UI route guard and backend API both reject non-Admin doctor management modifications with HTTP 403, and no duplicate or invalid record is saved."
+  },
+  {
+    "Scenario ID": "HMS-DOC-057",
+    "Scenario Name": "Doctor Profile Update Survives Hard Browser Refresh Without Reverting Qualification or Fee",
+    "Test Case Description": "Verify that editing a Doctor consultation fee and clicking Save persists after F5 browser reload.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is logged in on Doctor Management.",
+    "Test Data": "Updated Regular Fee: INR 1,200\nAction: F5 Refresh",
+    "Test Steps": "1. Open \"Doctor Management\".\n2. Click \"Edit\" on Dr. Amit Verma, and change Consultation Fee to \"1200\".\n3. Click \"Save\".\n4. Wait for the \"Appointment Confirmation\" screen to load.\n5. Press F5 to reload the browser page and locate Dr. Amit Verma in Doctor Management.\n6. Verify that Fee displays as \"₹1,200\" after refresh.",
+    "Expected Result": "- Updated fee ₹1,200 persists with zero errors after browser refresh and reflects in Online Booking."
+  },
+  {
+    "Scenario ID": "HMS-DOC-058",
+    "Scenario Name": "Doctor Schedule Weekly Availability Overlapping Shift Window Rejection",
+    "Test Case Description": "Verify that configuring two overlapping time blocks on the same weekday (e.g. 09:00-13:00 and 12:00-16:00) triggers clear overlap validation.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is configuring Weekly Availability for Dr. Amit Verma.",
+    "Test Data": "Block 2: 12:00 PM - 04:00 PM",
+    "Test Steps": "1. Open HMS Admin Portal.\n2. Click \"Doctor Management\".\n3. Click \"Edit\" on Dr. Amit Verma.\n4. Open \"Weekly Availability\".\n5. Configure Monday Block 1 as 09:00 AM - 01:00 PM.\n6. Add Monday Block 2 as 12:00 PM - 04:00 PM (1 hour overlap).\n7. Click \"Save\".\n8. Wait for the \"Doctor Management list\" screen to load.\n9. Verify that availability validation rejects overlapping Monday shift times.",
+    "Expected Result": "- Form validation blocks overlapping weekday shift blocks with explicit overlap message."
+  },
+  {
+    "Scenario ID": "HMS-DOC-059",
+    "Scenario Name": "Doctor Medical Registration License Number Minimum and Maximum Length Boundary",
+    "Test Case Description": "Verify Medical Registration Number enforces minimum/maximum alphanumeric bounds without accepting 1-char or symbol strings.",
+    "Pre-conditions": "- Hospital Administrator is logged in to HMS.\n- HMS website is accessible.\n- Hospital Admin is on Add Doctor under Professional Details.",
+    "Test Data": "Valid License: \"MMC-2015-44891\"",
+    "Test Steps": "1. Open HMS Admin Portal.\n2. Click \"Doctor Management\".\n3. Click \"Add Doctor\".\n4. Enter single character \"M\" in Medical Registration Number.\n5. Click \"Next\".\n6. Verify that minimum length validation error displays.\n7. Replace with valid license \"MMC-2015-44891\".\n8. Click \"Next\".\n9. Verify that step validates and proceeds with zero errors.",
+    "Expected Result": "- Single-character registration number triggers inline validation error, and no invalid record is saved on the \"Doctor Management list\" screen.\n- On the \"Doctor Management list\" screen, valid license \"MMC-2015-44891\" proceeds with zero errors without any validation or server error."
+  },
+  {
+    "Scenario ID": "HMS-DOC-060",
+    "Scenario Name": "Doctor Card Specialization Badge Truncation & Tooltip Clarity on Doctor Directory",
+    "Test Case Description": "Verify that long multi-specialization titles on Doctor Management cards render neatly without colliding with Fee/Action icons.",
+    "Pre-conditions": "- HMS website is accessible.\n- Doctor exists with multi-word specialization \"Interventional Cardiology & Electrophysiology\".",
+    "Test Data": "Target Module: Doctor Management\nTarget Screen: Doctor Management list\nScenario Reference: HMS-DOC-060",
+    "Test Steps": "1. Open the HMS website.\n2. Open \"Doctor Management\" listing page.\n3. Locate doctor card/row with long specialization title.\n4. Inspect text wrapping/ellipsis and adjacent Action icons.\n5. Verify that specialization label displays readably or wraps without overlapping Edit/View buttons.",
+    "Expected Result": "- Long specialization titles render without clipping Action column icons."
+  },
+  {
+    "Scenario ID": "HMS-DOC-061",
+    "Scenario Name": "Doctor Profile Deactivation Preserves Past Completed Appointments While Removing Future Public Slots",
+    "Test Case Description": "Verify that marking a Doctor Inactive hides them from public booking while retaining past clinical history.",
+    "Pre-conditions": "- HMS website is accessible.\n- Doctor Dr. Temporary Test has 1 completed past consultation.",
+    "Test Data": "Target Screen: Doctor Management list\nDoctor Name: Dr. Temporary Test",
+    "Test Steps": "1. Open the HMS website.\n2. Open \"Doctor Management\", locate Dr. Temporary Test, change status to Inactive.\n3. Click the \"Save\" button.\n4. Open public Home Page \"Find Doctors by Department\".\n5. Wait for the \"Doctor Management\" screen to load.\n6. Verify that Dr. Temporary Test is hidden from public and Front Office booking lists.\n7. Open Patient Management historical visits for the past patient.\n8. Verify that the completed historical consultation record remains viewable.",
+    "Expected Result": "- Inactive doctor is excluded from new public/Front Office bookings.\n- Historical consultation records remain intact with zero errors."
+  }
+]
